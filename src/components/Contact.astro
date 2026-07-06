@@ -1,0 +1,33 @@
+---
+import { site, type LocalizedPage } from "@content/site";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+const locale = page.locale;
+---
+
+<section id="contact" class="section-shell contact-section" aria-labelledby="contact-title">
+  <div>
+    <p class="eyebrow">{page.sections.contact.eyebrow}</p>
+    <h2 id="contact-title">{page.sections.contact.title}</h2>
+    <p class="section-body">{page.sections.contact.body}</p>
+  </div>
+
+  <div class="contact-panel">
+    <p class="contact-location">
+      <span>{page.sections.contact.locationLabel}</span>
+      {site.contact.location[locale]}
+    </p>
+    <div class="cta-row">
+      <a class="button button-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+        {page.sections.contact.whatsappLabel}
+      </a>
+      <a class="button button-secondary" href={site.contact.instagramUrl} target="_blank" rel="noopener noreferrer" translate="no">
+        {page.sections.contact.instagramLabel}
+      </a>
+    </div>
+  </div>
+</section>

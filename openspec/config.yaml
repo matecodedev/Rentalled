@@ -1,0 +1,80 @@
+schema: spec-driven
+
+# Rental Led — premium mobile-first Astro landing page.
+# Greenfield project: no package.json, no tooling yet.
+context: |
+  Project: Rental Led (CABA, Buenos Aires, Argentina) — LED screen rental + technical events.
+  Stage: Greenfield (no package.json / lockfile / tooling detected).
+  Recommended stack: Astro (per brief) — minimal JS by default, SEO-friendly static output,
+    native image optimization, bilingual static routes, accessibility-friendly.
+  Bilingual routes: Spanish `/`, English `/en/`, with visible ES/EN selector and correct `lang` attrs.
+  Primary CTA: WhatsApp. Secondary CTA: Instagram. No contact form.
+  Style: premium dark/near-dark base, LED-inspired accents, strong typography, editorial composition.
+  Required concerns: SEO, GEO/LLMO (Organization / LocalBusiness / Service / FAQPage JSON-LD),
+    i18n (ES/EN), image optimization + responsive images + lazy loading, accessibility,
+    `prefers-reduced-motion`, lean JS budget, GSAP only for high-value motion,
+    smooth 60fps via transform/opacity (per gsap-performance).
+  Existing assets on disk: `Logo.png` and `portfolio/*.jpg` (14 images).
+  Contact placeholders (replace later from a single source):
+    WhatsApp: `+54 9 11 1234-5678`
+    Instagram: `@rentalled.ba`
+
+rules:
+  proposal:
+    - Include rollback plan for any risky structural or dependency change.
+    - Do NOT fabricate clients, testimonials, awards, or certifications.
+    - Centralize contact placeholders behind a single content file so they can be replaced in one place.
+  specs:
+    - Use Given/When/Then for every scenario.
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY).
+    - Every requirement MUST be testable via build, manual review, or automated check.
+  design:
+    - Document the committed aesthetic direction + typography pairing (no generic AI-looking gradients).
+    - Document an animation strategy: CSS-first, GSAP only for motion that clearly earns its weight,
+      prefer transform/opacity, respect `prefers-reduced-motion`.
+    - Document i18n routing (ES `/`, EN `/en/`, hreflang), SEO/GEO metadata layout,
+      and the image optimization pipeline (Astro `<Image>` + responsive srcset + lazy loading for portfolio).
+    - Document JSON-LD strategy and the entity-rich copy plan that supports GEO/LLMO discoverability.
+  tasks:
+    - Group by phase: scaffold, base layout + SEO + i18n, sections, animations, perf + verify.
+    - Keep each task completable in one session and limited to ≤ 400 changed-line review budget.
+    - Forecast chained-PR slices when a phase risks exceeding the 400-line budget.
+  apply:
+    follow_existing_patterns: true
+    tdd: false
+    test_command: ""
+    # Orchestrator pre-resolved session-level delivery strategy; sdd-apply MUST respect it.
+    delivery_strategy: auto-chain
+    review_budget_lines: 400
+  verify:
+    test_command: "npm run build"
+    build_command: "npm run build"
+    coverage_threshold: 0
+    # Verification surface for a static landing: build success + Lighthouse/perf, accessible markup,
+    # JSON-LD validity, canonical + hreflang, responsive + lazy images, prefers-reduced-motion compliance.
+    perf_budget_notes: "Mobile Lighthouse (Perf/A11y/Best Practices/SEO) ≥ 90 target."
+  archive:
+    - Warn before merging destructive deltas.
+    - Preserve archive folder as audit trail (never delete or modify).
+
+testing:
+  strict_tdd: false
+  reason: >
+    Greenfield project — no test runner, linter, type checker, or formatter is installed yet.
+    The brief defines verification through build success, mobile responsiveness, accessibility,
+    SEO/GEO metadata, JSON-LD correctness, image optimization, and animation performance
+    rather than unit/integration/E2E tests. To enable strict TDD later, add `vitest`
+    or `@playwright/test` and document the layer in this config.
+  runner: null
+  framework: null
+  detected: 2026-07-05
+  layers:
+    unit: false
+    integration: false
+    e2e: false
+  coverage:
+    available: false
+  quality_tools:
+    linter: false
+    type_checker: false
+    formatter: false

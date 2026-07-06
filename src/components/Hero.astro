@@ -1,0 +1,30 @@
+---
+import { site, type LocalizedPage } from "@content/site";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+---
+
+<section id="hero" class="hero-section section-shell" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">{page.sections.hero.eyebrow}</p>
+    <h1 id="hero-title">{page.sections.hero.title}</h1>
+    <p class="hero-subtitle">{page.sections.hero.subtitle}</p>
+    <div class="cta-row">
+      <a class="button button-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+        {page.sections.hero.primaryCta}
+      </a>
+      <a class="button button-secondary" href="#portfolio">{page.sections.hero.secondaryCta}</a>
+    </div>
+  </div>
+
+  <aside class="hero-panel" aria-label={page.sections.about.eyebrow}>
+    <p class="hero-stat">{page.sections.about.stat}</p>
+    <ul>
+      {page.sections.about.details.map((detail) => <li>{detail}</li>)}
+    </ul>
+  </aside>
+</section>

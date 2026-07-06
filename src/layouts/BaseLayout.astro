@@ -1,0 +1,34 @@
+---
+import "../styles/global.css";
+import Seo from "../components/Seo.astro";
+import { getStructuredData, site, type LocalizedPage } from "../content/site";
+
+export interface Props {
+  page: LocalizedPage;
+  bodyClass?: string;
+  skipLabel?: string;
+}
+
+const {
+  page,
+  bodyClass = "",
+  skipLabel = "Skip to main content"
+} = Astro.props;
+const structuredData = getStructuredData(page);
+---
+
+<!doctype html>
+<html lang={page.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content={site.themeColor} />
+    <Seo page={page} />
+    <slot name="head" />
+    {structuredData.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">{skipLabel}</a>
+    <slot />
+  </body>
+</html>

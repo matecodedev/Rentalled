@@ -1,0 +1,21 @@
+---
+import { site, translate, type LocalizedPage } from "@content/site";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+const locale = page.locale;
+---
+
+<footer class="site-footer">
+  <p><strong translate="no">{site.name}</strong> — {page.sections.footer.rights}</p>
+  <nav aria-label={page.sections.shell.navLabel}>
+    {page.nav.map((item) => <a href={item.href}>{translate(item.label, locale)}</a>)}
+  </nav>
+  <div class="footer-language" aria-label={page.sections.footer.languageLabel}>
+    <a href="/" aria-current={locale === "es" ? "page" : undefined}>ES</a>
+    <a href="/en/" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+  </div>
+</footer>

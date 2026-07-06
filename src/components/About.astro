@@ -1,0 +1,23 @@
+---
+import type { LocalizedPage } from "@content/site";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+---
+
+<section id="about" class="section-shell split-section" aria-labelledby="about-title">
+  <div>
+    <p class="eyebrow">{page.sections.about.eyebrow}</p>
+    <h2 id="about-title">{page.sections.about.title}</h2>
+  </div>
+  <div class="text-panel">
+    <p class="section-body">{page.sections.about.body}</p>
+    <p class="stat-card">{page.sections.about.stat}</p>
+    <ul class="check-list">
+      {page.sections.about.details.map((detail) => <li>{detail}</li>)}
+    </ul>
+  </div>
+</section>

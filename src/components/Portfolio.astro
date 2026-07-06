@@ -1,0 +1,81 @@
+---
+import { Image, Picture } from "astro:assets";
+import { translate, type LocalizedPage } from "@content/site";
+import logo from "../../Logo.png";
+import screen01 from "../../portfolio/1000085426.jpg";
+import screen02 from "../../portfolio/1000084648.jpg";
+import screen03 from "../../portfolio/1000084628 (1).jpg";
+import screen04 from "../../portfolio/1000084639.jpg";
+import screen05 from "../../portfolio/1000118364.jpg";
+import screen06 from "../../portfolio/1000118370.jpg";
+import screen07 from "../../portfolio/1000140534.jpg";
+import screen08 from "../../portfolio/1000118367.jpg";
+import screen09 from "../../portfolio/1000084631.jpg";
+import screen10 from "../../portfolio/1000084684.jpg";
+import screen11 from "../../portfolio/1000085410.jpg";
+import screen12 from "../../portfolio/1000084645.jpg";
+import screen13 from "../../portfolio/1000084679.jpg";
+import screen14 from "../../portfolio/1000085416.jpg";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+const locale = page.locale;
+const sources = {
+  "1000085426.jpg": screen01,
+  "1000084648.jpg": screen02,
+  "1000084628 (1).jpg": screen03,
+  "1000084639.jpg": screen04,
+  "1000118364.jpg": screen05,
+  "1000118370.jpg": screen06,
+  "1000140534.jpg": screen07,
+  "1000118367.jpg": screen08,
+  "1000084631.jpg": screen09,
+  "1000084684.jpg": screen10,
+  "1000085410.jpg": screen11,
+  "1000084645.jpg": screen12,
+  "1000084679.jpg": screen13,
+  "1000085416.jpg": screen14
+} as const;
+
+const portfolioItems = page.portfolio.map((item) => {
+  const src = sources[item.fileName as keyof typeof sources];
+  if (!src) throw new Error(`Missing portfolio source for ${item.fileName}`);
+  return { ...item, src };
+});
+---
+
+<section id="portfolio" class="section-shell" aria-labelledby="portfolio-title">
+  <div class="section-heading">
+    <p class="eyebrow">{page.sections.portfolio.eyebrow}</p>
+    <h2 id="portfolio-title">{page.sections.portfolio.title}</h2>
+    <p class="section-body">{page.sections.portfolio.body}</p>
+  </div>
+
+  <div class="portfolio-brand-card">
+    <Image src={logo} alt={page.sections.portfolio.brandAlt} width={180} loading="lazy" decoding="async" />
+    <p>{page.sections.portfolio.brandCaption}</p>
+  </div>
+
+  <div class="portfolio-grid">
+    {portfolioItems.map((item) => (
+      <figure class:list={["portfolio-card", { "is-featured": item.featured }]}>
+        <Picture
+          src={item.src}
+          formats={["avif", "webp"]}
+          widths={[360, 640, 900]}
+          sizes="(max-width: 720px) 92vw, (max-width: 1120px) 44vw, 30vw"
+          alt={translate(item.alt, locale)}
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <span>{translate(item.category, locale)}</span>
+          <strong>{translate(item.alt, locale)}</strong>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

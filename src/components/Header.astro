@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import { site, translate, type LocalizedPage } from "@content/site";
+import logo from "../../Logo.png";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+const locale = page.locale;
+const brandLabel = locale === "es" ? `${site.name} inicio` : `${site.name} home`;
+---
+
+<header class="site-header" data-nav-root>
+  <a class="brand-link" href={page.route} aria-label={brandLabel} translate="no">
+    <Image src={logo} alt="" width={64} class="brand-logo" loading="eager" decoding="async" />
+    <span class="brand-name">{site.name}</span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-controls="site-menu"
+    aria-expanded="false"
+    aria-label={page.sections.shell.menuOpenLabel}
+    data-menu-toggle
+    data-open-label={page.sections.shell.menuOpenLabel}
+    data-close-label={page.sections.shell.menuCloseLabel}
+  >
+    <span data-menu-label>{page.sections.shell.menuOpenLabel}</span>
+  </button>
+
+  <nav id="site-menu" class="site-nav" aria-label={page.sections.shell.navLabel} data-menu-panel>
+    <div class="nav-links">
+      {page.nav.map((item) => <a href={item.href}>{translate(item.label, locale)}</a>)}
+    </div>
+
+    <div class="header-actions">
+      <div class="language-pill" aria-label={page.sections.shell.languageLabel}>
+        <a href="/" aria-current={locale === "es" ? "page" : undefined}>ES</a>
+        <a href="/en/" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+      </div>
+      <a class="button button-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+        {page.sections.hero.primaryCta}
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  import "../scripts/nav";
+</script>

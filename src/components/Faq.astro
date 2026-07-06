@@ -1,0 +1,27 @@
+---
+import { translate, type LocalizedPage } from "@content/site";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+const locale = page.locale;
+---
+
+<section id="faq" class="section-shell" aria-labelledby="faq-title">
+  <div class="section-heading">
+    <p class="eyebrow">{page.sections.faq.eyebrow}</p>
+    <h2 id="faq-title">{page.sections.faq.title}</h2>
+    <p class="section-body">{page.sections.faq.body}</p>
+  </div>
+
+  <div class="faq-list">
+    {page.faq.map((item) => (
+      <details class="faq-item">
+        <summary>{translate(item.question, locale)}</summary>
+        <p>{translate(item.answer, locale)}</p>
+      </details>
+    ))}
+  </div>
+</section>
