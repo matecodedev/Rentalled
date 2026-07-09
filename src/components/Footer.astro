@@ -1,5 +1,7 @@
 ---
 import { site, translate, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
+import BrandIcon from "./BrandIcon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -7,15 +9,54 @@ export interface Props {
 
 const { page } = Astro.props;
 const locale = page.locale;
+const footer = page.sections.footer;
+const shell = page.sections.shell;
+const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer">
-  <p><strong translate="no">{site.name}</strong> — {page.sections.footer.rights}</p>
-  <nav aria-label={page.sections.shell.navLabel}>
-    {page.nav.map((item) => <a href={item.href}>{translate(item.label, locale)}</a>)}
-  </nav>
-  <div class="footer-language" aria-label={page.sections.footer.languageLabel}>
-    <a href="/" aria-current={locale === "es" ? "page" : undefined}>ES</a>
-    <a href="/en/" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+<footer class="rl-footer">
+  <div class="rl-footer-top">
+    <div>
+      <a class="rl-footer-brand" href="#hero" translate="no">
+        <img class="brand-logo" src="/Logo.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
+        <span class="brand-name">RENTAL <b>LED</b></span>
+      </a>
+      <p class="rights">{footer.rights}</p>
+    </div>
+
+    <div class="rl-footer-col">
+      <h4>{footer.navLabel}</h4>
+      <nav class="rl-footer-nav" aria-label={shell.navLabel}>
+        {page.nav.map((item) => <a href={item.href}>{translate(item.label, locale)}</a>)}
+      </nav>
+    </div>
+
+    <div class="rl-footer-col">
+      <h4>{footer.contactLabel}</h4>
+      <div class="rl-social">
+        <a href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <BrandIcon name="whatsapp" size={19} />
+        </a>
+        <a href={site.contact.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <BrandIcon name="instagram" size={19} />
+        </a>
+      </div>
+      <p class="rl-footer-loc"><Icon name="map-pin" size={15} />{site.contact.location[locale]}</p>
+    </div>
+
+    <div class="rl-footer-col">
+      <h4>{footer.languageLabel}</h4>
+      <div class="language-pill" role="group" aria-label={shell.languageLabel}>
+        <a href="/" hreflang="es" aria-current={locale === "es" ? "page" : undefined}>ES</a>
+        <a href="/en/" hreflang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="rl-footer-bottom">
+    <div class="rl-footer-bottom-inner">
+      <span>© {year} {site.name} · {site.contact.location[locale]}</span>
+      <span>{footer.tagline}</span>
+    </div>
   </div>
 </footer>

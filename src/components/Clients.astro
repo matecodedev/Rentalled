@@ -1,5 +1,6 @@
 ---
 import { translate, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -7,18 +8,20 @@ export interface Props {
 
 const { page } = Astro.props;
 const locale = page.locale;
+const clients = page.sections.clients;
 ---
 
-<section id="clients" class="section-shell split-section" aria-labelledby="clients-title">
-  <div>
-    <p class="eyebrow">{page.sections.clients.eyebrow}</p>
-    <h2 id="clients-title">{page.sections.clients.title}</h2>
-    <p class="section-body">{page.sections.clients.body}</p>
+<section id="clients" class="rl-section" aria-labelledby="clients-title">
+  <div class="rl-section-head rl-reveal">
+    <p class="eyebrow rl-eyebrow-accent">{clients.eyebrow}</p>
+    <h2 id="clients-title" class="rl-section-title">{clients.title}</h2>
+    <p class="rl-section-body">{clients.body}</p>
   </div>
 
-  <div class="client-list">
-    {page.clients.map((client) => (
-      <article class="client-item">
+  <div class="rl-clients">
+    {page.clients.map((client, index) => (
+      <article class="rl-client rl-reveal" data-delay={(index % 3) + 1}>
+        <span class="rl-client-ic"><Icon name={client.icon} size={20} /></span>
         <h3>{translate(client.title, locale)}</h3>
         <p>{translate(client.description, locale)}</p>
       </article>

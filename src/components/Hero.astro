@@ -1,30 +1,79 @@
 ---
 import { site, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
+import BrandIcon from "./BrandIcon.astro";
 
 export interface Props {
   page: LocalizedPage;
 }
 
 const { page } = Astro.props;
+const hero = page.sections.hero;
+const img = (fileName: string) => `/portfolio/${fileName}`;
+// Duplicate the ticker list so the -50% keyframe loops seamlessly.
+const tickerLoop = [...hero.ticker, ...hero.ticker];
 ---
 
-<section id="hero" class="hero-section section-shell" aria-labelledby="hero-title">
-  <div class="hero-copy">
-    <p class="eyebrow">{page.sections.hero.eyebrow}</p>
-    <h1 id="hero-title">{page.sections.hero.title}</h1>
-    <p class="hero-subtitle">{page.sections.hero.subtitle}</p>
-    <div class="cta-row">
-      <a class="button button-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
-        {page.sections.hero.primaryCta}
-      </a>
-      <a class="button button-secondary" href="#portfolio">{page.sections.hero.secondaryCta}</a>
+<section id="hero" class="rl-hero-wrap" aria-label={hero.eyebrow}>
+  <div class="rl-hero-bento">
+    <div class="rl-hero-left">
+      <div class="rl-hero-copy">
+        <span class="rl-badge rl-heroel"><span class="rl-dot"></span>{hero.eyebrow}</span>
+        <h1 class="rl-hero-title rl-heroel" data-delay="1">
+          {hero.titleLead} <span class="rl-grad">{hero.titleHighlight}</span>
+        </h1>
+        <p class="rl-hero-sub rl-heroel" data-delay="2">{hero.subtitle}</p>
+        <div class="rl-hero-actions rl-heroel" data-delay="3">
+          <a class="btn btn-lg btn-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <BrandIcon name="whatsapp" size={18} />
+            {hero.primaryCta}
+          </a>
+          <a class="btn btn-lg btn-ghost" href="#portfolio">
+            {hero.secondaryCta}
+            <Icon name="arrow-down-right" size={18} />
+          </a>
+        </div>
+      </div>
+
+      <div class="rl-hero-stats">
+        {hero.stats.map((stat) => (
+          <div class="rl-stat">
+            <span class="rl-stat-k">{stat.key}</span>
+            <div>
+              <div class="rl-stat-n">{stat.value}</div>
+              <div class="rl-stat-l">{stat.label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="rl-hero-media">
+      {hero.media.map((media, index) => (
+        <figure class="rl-hero-fig">
+          <img
+            src={img(media.fileName)}
+            alt={media.category}
+            width="600"
+            height="800"
+            loading="eager"
+            fetchpriority={index === 0 ? "high" : "auto"}
+            decoding="async"
+          />
+          {media.liveLabel && (
+            <div class="rl-live-badge"><span class="rl-dot"></span>{media.liveLabel}</div>
+          )}
+          <figcaption class="rl-fig-cap"><span>{media.category}</span></figcaption>
+        </figure>
+      ))}
     </div>
   </div>
-
-  <aside class="hero-panel" aria-label={page.sections.about.eyebrow}>
-    <p class="hero-stat">{page.sections.about.stat}</p>
-    <ul>
-      {page.sections.about.details.map((detail) => <li>{detail}</li>)}
-    </ul>
-  </aside>
 </section>
+
+<div class="rl-ticker" aria-hidden="true">
+  <div class="rl-ticker-track">
+    {tickerLoop.map((item) => (
+      <span class="rl-ticker-item">{item}<i></i></span>
+    ))}
+  </div>
+</div>

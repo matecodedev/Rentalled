@@ -18,11 +18,21 @@ const structuredData = getStructuredData(page);
 ---
 
 <!doctype html>
-<html lang={page.htmlLang}>
+<html lang={page.htmlLang} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={site.themeColor} />
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap"
+    />
+    <link rel="preload" href="/fonts/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin />
+
     <Seo page={page} />
     <slot name="head" />
     {structuredData.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
@@ -30,5 +40,27 @@ const structuredData = getStructuredData(page);
   <body class={bodyClass}>
     <a class="skip-link" href="#main">{skipLabel}</a>
     <slot />
+
+    <script>
+      // Scroll-reveal: reliable cross-browser replacement for animation-timeline:view().
+      const reveals = document.querySelectorAll<HTMLElement>(".rl-reveal");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce || !("IntersectionObserver" in window)) {
+        reveals.forEach((el) => el.classList.add("is-visible"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+        );
+        reveals.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>

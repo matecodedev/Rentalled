@@ -1,5 +1,6 @@
 ---
 import { translate, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -7,19 +8,23 @@ export interface Props {
 
 const { page } = Astro.props;
 const locale = page.locale;
+const services = page.sections.services;
 ---
 
-<section id="services" class="section-shell" aria-labelledby="services-title">
-  <div class="section-heading">
-    <p class="eyebrow">{page.sections.services.eyebrow}</p>
-    <h2 id="services-title">{page.sections.services.title}</h2>
-    <p class="section-body">{page.sections.services.body}</p>
+<section id="services" class="rl-section" aria-labelledby="services-title">
+  <div class="rl-section-head rl-reveal">
+    <p class="eyebrow rl-eyebrow-accent">{services.eyebrow}</p>
+    <h2 id="services-title" class="rl-section-title">{services.title}</h2>
+    <p class="rl-section-body">{services.body}</p>
   </div>
 
-  <div class="card-grid service-grid">
+  <div class="rl-cards">
     {page.services.map((service, index) => (
-      <article class="content-card">
-        <span class="card-index">{String(index + 1).padStart(2, "0")}</span>
+      <article class="card lift rl-service rl-reveal" data-delay={(index % 3) + 1}>
+        <div class="rl-service-top">
+          <span class="rl-service-ic"><Icon name={service.icon} size={21} /></span>
+          <span class="rl-service-num">{String(index + 1).padStart(2, "0")}</span>
+        </div>
         <h3>{translate(service.title, locale)}</h3>
         <p>{translate(service.description, locale)}</p>
       </article>

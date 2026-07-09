@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import { site, translate, type LocalizedPage } from "@content/site";
-import logo from "../../Logo.png";
+import BrandIcon from "./BrandIcon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -10,12 +9,14 @@ export interface Props {
 const { page } = Astro.props;
 const locale = page.locale;
 const brandLabel = locale === "es" ? `${site.name} inicio` : `${site.name} home`;
+const hero = page.sections.hero;
+const shell = page.sections.shell;
 ---
 
 <header class="site-header" data-nav-root>
-  <a class="brand-link" href={page.route} aria-label={brandLabel} translate="no">
-    <Image src={logo} alt="" width={64} class="brand-logo" loading="eager" decoding="async" />
-    <span class="brand-name">{site.name}</span>
+  <a class="brand-link" href="#hero" aria-label={brandLabel} translate="no">
+    <img class="brand-logo" src="/Logo.png" alt="" width="42" height="42" decoding="async" fetchpriority="high" />
+    <span class="brand-name">RENTAL <b>LED</b></span>
   </a>
 
   <button
@@ -23,26 +24,27 @@ const brandLabel = locale === "es" ? `${site.name} inicio` : `${site.name} home`
     type="button"
     aria-controls="site-menu"
     aria-expanded="false"
-    aria-label={page.sections.shell.menuOpenLabel}
+    aria-label={shell.menuOpenLabel}
     data-menu-toggle
-    data-open-label={page.sections.shell.menuOpenLabel}
-    data-close-label={page.sections.shell.menuCloseLabel}
+    data-open-label={shell.menuOpenLabel}
+    data-close-label={shell.menuCloseLabel}
   >
-    <span data-menu-label>{page.sections.shell.menuOpenLabel}</span>
+    <span data-menu-label>{shell.menuOpenLabel}</span>
   </button>
 
-  <nav id="site-menu" class="site-nav" aria-label={page.sections.shell.navLabel} data-menu-panel>
+  <nav id="site-menu" class="site-nav" aria-label={shell.navLabel} data-menu-panel>
     <div class="nav-links">
       {page.nav.map((item) => <a href={item.href}>{translate(item.label, locale)}</a>)}
     </div>
 
     <div class="header-actions">
-      <div class="language-pill" aria-label={page.sections.shell.languageLabel}>
-        <a href="/" aria-current={locale === "es" ? "page" : undefined}>ES</a>
-        <a href="/en/" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+      <div class="language-pill" role="group" aria-label={shell.languageLabel}>
+        <a href="/" hreflang="es" aria-current={locale === "es" ? "page" : undefined}>ES</a>
+        <a href="/en/" hreflang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
       </div>
-      <a class="button button-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
-        {page.sections.hero.primaryCta}
+      <a class="btn btn-sm btn-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+        <BrandIcon name="whatsapp" size={15} />
+        {hero.primaryCtaShort}
       </a>
     </div>
   </nav>
