@@ -10,6 +10,7 @@ const { page } = Astro.props;
 const locale = page.locale;
 const portfolio = page.sections.portfolio;
 const sizeClass: Record<string, string> = { big: "rl-pf-big", tall: "rl-pf-tall", std: "" };
+const zoomLabel = locale === "es" ? "Ampliar imagen" : "Enlarge image";
 ---
 
 <section id="portfolio" class="rl-section" aria-labelledby="portfolio-title">
@@ -25,20 +26,22 @@ const sizeClass: Record<string, string> = { big: "rl-pf-big", tall: "rl-pf-tall"
     </a>
   </div>
 
-  <div class="rl-pf-grid">
+  <div class="rl-pf-grid" data-pf-grid>
     {page.portfolio.map((item) => (
-      <figure class:list={["rl-pf-tile", sizeClass[item.size]]}>
+      <button
+        type="button"
+        class:list={["rl-pf-tile", sizeClass[item.size]]}
+        data-lightbox={`/portfolio/${item.fileName}`}
+        aria-label={`${translate(item.alt, locale)} — ${zoomLabel}`}
+      >
         <img
           src={`/portfolio/${item.fileName}`}
           alt={translate(item.alt, locale)}
           loading="lazy"
           decoding="async"
         />
-        <figcaption class="rl-pf-cap">
-          <span class="mono">{translate(item.category, locale)}</span>
-          <span class="dot"></span>
-        </figcaption>
-      </figure>
+        <span class="rl-zoom" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
+      </button>
     ))}
   </div>
 </section>

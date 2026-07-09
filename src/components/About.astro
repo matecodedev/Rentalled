@@ -12,14 +12,16 @@ const about = page.sections.about;
 
 <section id="about" class="rl-about" aria-labelledby="about-title">
   <div class="rl-about-grid rl-reveal">
-    <div>
+    <div class="rl-about-copy">
       <p class="eyebrow rl-eyebrow-accent">{about.eyebrow}</p>
-      <div class="rl-about-years">
+      <h2 id="about-title" class="rl-about-h">{about.title}</h2>
+      <p class="rl-about-body">{about.body}</p>
+
+      <div class="rl-about-stat">
         <span class="rl-about-num rl-grad">{about.years}</span>
         <span class="rl-about-yearslabel">{about.yearsLabel}</span>
       </div>
-      <h2 id="about-title" class="rl-about-h">{about.title}</h2>
-      <p class="rl-about-body">{about.body}</p>
+
       <ul class="rl-about-list">
         {about.details.map((detail) => (
           <li>
@@ -35,12 +37,11 @@ const about = page.sections.about;
         class="rl-about-img"
         src={`/portfolio/${about.imageFileName}`}
         alt={about.imageAlt}
-        width="640"
-        height="800"
+        width="800"
+        height="600"
         loading="lazy"
         decoding="async"
       />
-      <span class="rl-about-tag"><span class="rl-dot"></span>{about.imageTag}</span>
     </div>
   </div>
 </section>

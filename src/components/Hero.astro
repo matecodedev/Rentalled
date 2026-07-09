@@ -12,6 +12,7 @@ const hero = page.sections.hero;
 const img = (fileName: string) => `/portfolio/${fileName}`;
 // Duplicate the ticker list so the -50% keyframe loops seamlessly.
 const tickerLoop = [...hero.ticker, ...hero.ticker];
+const zoomLabel = page.locale === "es" ? "Ampliar imagen" : "Enlarge image";
 ---
 
 <section id="hero" class="rl-hero-wrap" aria-label={hero.eyebrow}>
@@ -36,8 +37,8 @@ const tickerLoop = [...hero.ticker, ...hero.ticker];
       </div>
 
       <div class="rl-hero-stats">
-        {hero.stats.map((stat) => (
-          <div class="rl-stat">
+        {hero.stats.map((stat, index) => (
+          <div class="rl-stat rl-heroel" data-delay={index + 1}>
             <span class="rl-stat-k">{stat.key}</span>
             <div>
               <div class="rl-stat-n">{stat.value}</div>
@@ -50,7 +51,7 @@ const tickerLoop = [...hero.ticker, ...hero.ticker];
 
     <div class="rl-hero-media">
       {hero.media.map((media, index) => (
-        <figure class="rl-hero-fig">
+        <button type="button" class="rl-hero-fig rl-heroel" data-delay={index + 2} data-lightbox={img(media.fileName)} aria-label={zoomLabel}>
           <img
             src={img(media.fileName)}
             alt={media.category}
@@ -60,11 +61,8 @@ const tickerLoop = [...hero.ticker, ...hero.ticker];
             fetchpriority={index === 0 ? "high" : "auto"}
             decoding="async"
           />
-          {media.liveLabel && (
-            <div class="rl-live-badge"><span class="rl-dot"></span>{media.liveLabel}</div>
-          )}
-          <figcaption class="rl-fig-cap"><span>{media.category}</span></figcaption>
-        </figure>
+          <span class="rl-zoom" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
+        </button>
       ))}
     </div>
   </div>

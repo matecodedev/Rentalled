@@ -41,6 +41,59 @@ const structuredData = getStructuredData(page);
     <a class="skip-link" href="#main">{skipLabel}</a>
     <slot />
 
+    <div class="rl-lightbox" data-lightbox-overlay hidden>
+      <button class="rl-lightbox-close" type="button" data-lightbox-close aria-label="Cerrar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <figure class="rl-lightbox-figure">
+        <img data-lightbox-image src="" alt="" />
+      </figure>
+    </div>
+
+    <script>
+      // Image lightbox — shared by hero + portfolio. Opens on [data-lightbox] click,
+      // closes on X, backdrop click or Escape. Locks body scroll while open.
+      const overlay = document.querySelector<HTMLElement>("[data-lightbox-overlay]");
+      const lbImg = document.querySelector<HTMLImageElement>("[data-lightbox-image]");
+      const triggers = document.querySelectorAll<HTMLElement>("[data-lightbox]");
+      let lastFocused: HTMLElement | null = null;
+
+      if (overlay && lbImg) {
+        const open = (src: string, alt: string, trigger: HTMLElement) => {
+          lastFocused = trigger;
+          lbImg.src = src;
+          lbImg.alt = alt;
+          overlay.hidden = false;
+          requestAnimationFrame(() => overlay.classList.add("is-open"));
+          document.body.style.overflow = "hidden";
+          overlay.querySelector<HTMLElement>("[data-lightbox-close]")?.focus();
+        };
+        const close = () => {
+          overlay.classList.remove("is-open");
+          document.body.style.overflow = "";
+          window.setTimeout(() => {
+            overlay.hidden = true;
+            lbImg.src = "";
+          }, 240);
+          lastFocused?.focus();
+        };
+        triggers.forEach((trigger) => {
+          trigger.addEventListener("click", () => {
+            const src = trigger.getAttribute("data-lightbox") || "";
+            const inner = trigger.querySelector("img");
+            open(src, inner?.getAttribute("alt") || "", trigger);
+          });
+        });
+        overlay.addEventListener("click", (event) => {
+          const target = event.target as HTMLElement;
+          if (target === overlay || target.closest("[data-lightbox-close]")) close();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !overlay.hidden) close();
+        });
+      }
+    </script>
+
     <script>
       // Scroll-reveal: reliable cross-browser replacement for animation-timeline:view().
       const reveals = document.querySelectorAll<HTMLElement>(".rl-reveal");

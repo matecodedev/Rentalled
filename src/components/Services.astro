@@ -1,6 +1,7 @@
 ---
-import { translate, type LocalizedPage } from "@content/site";
+import { site, translate, type LocalizedPage } from "@content/site";
 import Icon from "./Icon.astro";
+import BrandIcon from "./BrandIcon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -9,6 +10,9 @@ export interface Props {
 const { page } = Astro.props;
 const locale = page.locale;
 const services = page.sections.services;
+const ctaTitle = locale === "es" ? "¿No sabés qué formato necesitás?" : "Not sure which format you need?";
+const ctaBody = locale === "es" ? "Contanos tu evento y te orientamos con la mejor solución LED." : "Tell us about your event and we'll guide you to the right LED setup.";
+const ctaLabel = locale === "es" ? "Cotizar" : "Get a quote";
 ---
 
 <section id="services" class="rl-section" aria-labelledby="services-title">
@@ -20,14 +24,25 @@ const services = page.sections.services;
 
   <div class="rl-cards">
     {page.services.map((service, index) => (
-      <article class="card lift rl-service rl-reveal" data-delay={(index % 3) + 1}>
-        <div class="rl-service-top">
-          <span class="rl-service-ic"><Icon name={service.icon} size={21} /></span>
-          <span class="rl-service-num">{String(index + 1).padStart(2, "0")}</span>
-        </div>
+      <article class="rl-feature rl-reveal" data-delay={(index % 3) + 1}>
+        <span class="rl-feature-num">{String(index + 1).padStart(2, "0")}</span>
+        <span class="rl-feature-ic"><Icon name={service.icon} size={22} /></span>
         <h3>{translate(service.title, locale)}</h3>
         <p>{translate(service.description, locale)}</p>
+        <span class="rl-feature-arrow" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
       </article>
     ))}
+
+    <a
+      class="rl-feature rl-feature-cta rl-reveal"
+      data-delay="3"
+      href={site.contact.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <h3>{ctaTitle}</h3>
+      <p>{ctaBody}</p>
+      <span class="rl-feature-ctabtn"><BrandIcon name="whatsapp" size={17} />{ctaLabel}</span>
+    </a>
   </div>
 </section>
