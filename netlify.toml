@@ -1,0 +1,10 @@
+# ⚠️ TEMPORARY — client preview only.
+# This blocks search engines from indexing the Netlify preview URL
+# (rentalled.netlify.app) so it never competes with the real domain.
+#
+# 👉 REMOVE this [[headers]] block (or the whole file) BEFORE going live
+#    on rentalled.com.ar, otherwise the production site stays de-indexed.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
