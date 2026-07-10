@@ -28,6 +28,8 @@ export type PortfolioSize = "big" | "tall" | "std";
 export type PortfolioItem = {
   id: string;
   fileName: string;
+  width: number;
+  height: number;
   size: PortfolioSize;
   alt: LocalizedText;
   category: LocalizedText;
@@ -63,6 +65,8 @@ export type LandingSections = {
     yearsLabel: string;
     details: string[];
     imageFileName: string;
+    imageWidth: number;
+    imageHeight: number;
     imageAlt: string;
     imageTag: string;
   };
@@ -152,20 +156,20 @@ export const site = {
     { id: "timing", question: { es: "¿Con cuánto tiempo conviene consultar?", en: "How far in advance should I contact you?" }, answer: { es: "Recomendamos consultar con anticipación para validar disponibilidad, medidas, accesos y requerimientos técnicos.", en: "We recommend contacting us early to confirm availability, dimensions, access and technical requirements." } }
   ],
   portfolio: [
-    { id: "screen-01", fileName: "1000085426.jpg", size: "big", alt: { es: "Pantalla LED en evento con operación técnica", en: "LED screen at an event with technical operation" }, category: { es: "Evento técnico", en: "Technical event" }, featured: true },
-    { id: "screen-02", fileName: "1000084648.jpg", size: "std", alt: { es: "Montaje de pantalla LED para presentación", en: "LED screen setup for a presentation" }, category: { es: "Corporativo", en: "Corporate" } },
-    { id: "screen-03", fileName: "1000084628-1.jpg", size: "tall", alt: { es: "Pantalla LED para evento social", en: "LED screen for a social event" }, category: { es: "Social", en: "Social" } },
-    { id: "screen-04", fileName: "1000084639.jpg", size: "std", alt: { es: "Escenario con pantalla LED indoor", en: "Stage with indoor LED screen" }, category: { es: "Indoor", en: "Indoor" } },
-    { id: "screen-05", fileName: "1000118364.jpg", size: "tall", alt: { es: "Pantalla LED para show y contenido visual", en: "LED screen for a show" }, category: { es: "Show", en: "Show" } },
-    { id: "screen-06", fileName: "1000118370.jpg", size: "std", alt: { es: "Evento con pantalla LED y ambientación", en: "Event with LED screen" }, category: { es: "Producción", en: "Production" } },
-    { id: "screen-07", fileName: "1000140534.jpg", size: "big", alt: { es: "Pantalla LED de gran formato para evento", en: "Large-format LED screen" }, category: { es: "Gran formato", en: "Large format" } },
-    { id: "screen-08", fileName: "1000118367.jpg", size: "std", alt: { es: "Pantalla LED en espacio de eventos", en: "LED screen in an event venue" }, category: { es: "Venue", en: "Venue" } },
-    { id: "screen-09", fileName: "1000084631.jpg", size: "tall", alt: { es: "Contenido visual en pantalla LED", en: "Visual content on an LED screen" }, category: { es: "Contenido", en: "Content" } },
-    { id: "screen-10", fileName: "1000084684.jpg", size: "std", alt: { es: "Montaje técnico para pantalla LED", en: "Technical setup for an LED screen" }, category: { es: "Montaje", en: "Setup" } },
-    { id: "screen-11", fileName: "1000085410.jpg", size: "std", alt: { es: "Pantalla LED para presentación en vivo", en: "LED screen for a live presentation" }, category: { es: "En vivo", en: "Live" } },
-    { id: "screen-12", fileName: "1000084645.jpg", size: "tall", alt: { es: "Pantalla LED integrada a producción de evento", en: "LED screen integrated into event production" }, category: { es: "Integración", en: "Integration" } },
-    { id: "screen-13", fileName: "1000084679.jpg", size: "std", alt: { es: "Pantalla LED con visuales para audiencia", en: "LED screen with visuals for an audience" }, category: { es: "Audiencia", en: "Audience" } },
-    { id: "screen-14", fileName: "1000085416.jpg", size: "std", alt: { es: "Pantalla LED para experiencia de marca", en: "LED screen for a brand experience" }, category: { es: "Marca", en: "Brand" } }
+    { id: "screen-01", fileName: "1000085426.webp", width: 900, height: 1600, size: "big", alt: { es: "Pantalla LED en evento con operación técnica", en: "LED screen at an event with technical operation" }, category: { es: "Evento técnico", en: "Technical event" }, featured: true },
+    { id: "screen-02", fileName: "1000084648.webp", width: 960, height: 1280, size: "std", alt: { es: "Montaje de pantalla LED para presentación", en: "LED screen setup for a presentation" }, category: { es: "Corporativo", en: "Corporate" } },
+    { id: "screen-03", fileName: "1000084628-1.webp", width: 960, height: 1280, size: "tall", alt: { es: "Pantalla LED para evento social", en: "LED screen for a social event" }, category: { es: "Social", en: "Social" } },
+    { id: "screen-04", fileName: "1000084639.webp", width: 1280, height: 960, size: "std", alt: { es: "Escenario con pantalla LED indoor", en: "Stage with indoor LED screen" }, category: { es: "Indoor", en: "Indoor" } },
+    { id: "screen-05", fileName: "1000118364.webp", width: 1200, height: 1600, size: "tall", alt: { es: "Pantalla LED para show y contenido visual", en: "LED screen for a show" }, category: { es: "Show", en: "Show" } },
+    { id: "screen-06", fileName: "1000118370.webp", width: 960, height: 1280, size: "std", alt: { es: "Evento con pantalla LED y ambientación", en: "Event with LED screen" }, category: { es: "Producción", en: "Production" } },
+    { id: "screen-07", fileName: "1000140534.webp", width: 1200, height: 1600, size: "big", alt: { es: "Pantalla LED de gran formato para evento", en: "Large-format LED screen" }, category: { es: "Gran formato", en: "Large format" } },
+    { id: "screen-08", fileName: "1000118367.webp", width: 960, height: 1280, size: "std", alt: { es: "Pantalla LED en espacio de eventos", en: "LED screen in an event venue" }, category: { es: "Venue", en: "Venue" } },
+    { id: "screen-09", fileName: "1000084631.webp", width: 1280, height: 960, size: "tall", alt: { es: "Contenido visual en pantalla LED", en: "Visual content on an LED screen" }, category: { es: "Contenido", en: "Content" } },
+    { id: "screen-10", fileName: "1000084684.webp", width: 960, height: 1280, size: "std", alt: { es: "Montaje técnico para pantalla LED", en: "Technical setup for an LED screen" }, category: { es: "Montaje", en: "Setup" } },
+    { id: "screen-11", fileName: "1000085410.webp", width: 1600, height: 900, size: "std", alt: { es: "Pantalla LED para presentación en vivo", en: "LED screen for a live presentation" }, category: { es: "En vivo", en: "Live" } },
+    { id: "screen-12", fileName: "1000084645.webp", width: 960, height: 1280, size: "tall", alt: { es: "Pantalla LED integrada a producción de evento", en: "LED screen integrated into event production" }, category: { es: "Integración", en: "Integration" } },
+    { id: "screen-13", fileName: "1000084679.webp", width: 960, height: 1280, size: "std", alt: { es: "Pantalla LED con visuales para audiencia", en: "LED screen with visuals for an audience" }, category: { es: "Audiencia", en: "Audience" } },
+    { id: "screen-14", fileName: "1000085416.webp", width: 900, height: 1600, size: "std", alt: { es: "Pantalla LED para experiencia de marca", en: "LED screen for a brand experience" }, category: { es: "Marca", en: "Brand" } }
   ],
   pages: {
     es: {
@@ -190,7 +194,7 @@ export const site = {
             { key: "Outdoor", value: "3.9 mm", label: "pixel pitch" }
           ],
           media: [
-            { fileName: "1000085426.jpg", category: "Evento corporativo", liveLabel: "" }
+            { fileName: "1000085426.webp", category: "Evento corporativo", liveLabel: "" }
           ],
           ticker: ["Pantallas LED", "Eventos corporativos", "Eventos sociales", "CABA · Buenos Aires", "Operación técnica propia", "Indoor 2.6mm", "Outdoor 3.9mm", "Producciones en vivo"]
         },
@@ -201,7 +205,9 @@ export const site = {
           title: "Un socio técnico, no solo un proveedor de equipos",
           body: "Operamos pantallas LED indoor pitch 2.6 mm y outdoor pitch 3.9 mm con equipo técnico propio, planificación clara y atención personalizada para cada proyecto.",
           details: ["Operación técnica propia", "Pantallas indoor 2.6 mm y outdoor 3.9 mm", "Respuesta rápida y seguimiento responsable"],
-          imageFileName: "1000140534.jpg",
+          imageFileName: "1000140534-about.webp",
+          imageWidth: 1200,
+          imageHeight: 900,
           imageAlt: "Pantalla LED de gran formato en evento",
           imageTag: "Operación en vivo"
         },
@@ -235,7 +241,7 @@ export const site = {
             { key: "Outdoor", value: "3.9 mm", label: "pixel pitch" }
           ],
           media: [
-            { fileName: "1000085426.jpg", category: "Corporate event", liveLabel: "" }
+            { fileName: "1000085426.webp", category: "Corporate event", liveLabel: "" }
           ],
           ticker: ["LED screens", "Corporate events", "Social events", "Buenos Aires", "In-house technical crew", "Indoor 2.6mm", "Outdoor 3.9mm", "Live productions"]
         },
@@ -246,7 +252,9 @@ export const site = {
           title: "A technical partner, not just an equipment supplier",
           body: "We operate indoor 2.6 mm pitch and outdoor 3.9 mm pitch LED screens with an in-house technical crew, clear planning and personalized attention for every project.",
           details: ["In-house technical operation", "Indoor 2.6 mm and outdoor 3.9 mm screens", "Fast response and responsible follow-through"],
-          imageFileName: "1000140534.jpg",
+          imageFileName: "1000140534-about.webp",
+          imageWidth: 1200,
+          imageHeight: 900,
           imageAlt: "Large-format LED screen at an event",
           imageTag: "Live operation"
         },
@@ -307,8 +315,9 @@ export const getStructuredData = (page: LocalizedPage): JsonLdObject[] => {
       "@id": organizationId,
       name: site.name,
       url: siteUrl,
-      logo: imageUrl,
+      logo: toAbsoluteUrl("/logo.webp"),
       image: imageUrl,
+      knowsLanguage: ["Spanish", "English"],
       sameAs: [site.contact.instagramUrl],
       contactPoint: [
         {

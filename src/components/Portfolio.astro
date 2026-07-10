@@ -37,6 +37,8 @@ const zoomLabel = locale === "es" ? "Ampliar imagen" : "Enlarge image";
         <img
           src={`/portfolio/${item.fileName}`}
           alt={translate(item.alt, locale)}
+          width={item.width}
+          height={item.height}
           loading="lazy"
           decoding="async"
         />
@@ -95,7 +97,7 @@ const zoomLabel = locale === "es" ? "Ampliar imagen" : "Enlarge image";
     };
 
     const cloneTiles = () => {
-      if (cloned) return;
+      if (cloned || mqReduce.matches) return;
       const originals = Array.from(grid.querySelectorAll<HTMLElement>(".rl-pf-tile"));
       count = originals.length;
       originals.forEach((tile) => {

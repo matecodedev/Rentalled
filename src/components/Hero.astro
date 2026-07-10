@@ -51,12 +51,12 @@ const zoomLabel = page.locale === "es" ? "Ampliar imagen" : "Enlarge image";
 
     <div class="rl-hero-media">
       {hero.media.map((media, index) => (
-        <button type="button" class="rl-hero-fig rl-heroel" data-delay={index + 2} data-lightbox={img(media.fileName)} aria-label={zoomLabel}>
+        <button type="button" class="rl-hero-fig rl-heroel" data-delay={index + 2} data-lightbox={img(media.fileName)} aria-label={`${zoomLabel}: ${media.category}`}>
           <img
             src={img(media.fileName)}
             alt={media.category}
-            width="600"
-            height="800"
+            width="900"
+            height="1600"
             loading="eager"
             fetchpriority={index === 0 ? "high" : "auto"}
             decoding="async"

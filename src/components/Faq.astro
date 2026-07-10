@@ -20,43 +20,15 @@ const faq = page.sections.faq;
 
   <div class="rl-faq-list" data-faq>
     {page.faq.map((item, index) => (
-      <div class="rl-faq-item rl-reveal" data-open={index === 0 ? "true" : "false"}>
-        <button
-          class="rl-faq-q"
-          type="button"
-          aria-expanded={index === 0 ? "true" : "false"}
-          aria-controls={`faq-panel-${item.id}`}
-          data-faq-toggle
-        >
+      <details class="rl-faq-item faq-item rl-reveal" open={index === 0 ? true : undefined}>
+        <summary class="rl-faq-q">
           <span>{translate(item.question, locale)}</span>
           <span class="rl-faq-icon"><Icon name="plus" size={17} /></span>
-        </button>
-        <div class="rl-faq-panel" id={`faq-panel-${item.id}`} role="region">
+        </summary>
+        <div class="rl-faq-panel" id={`faq-panel-${item.id}`}>
           <p>{translate(item.answer, locale)}</p>
         </div>
-      </div>
+      </details>
     ))}
   </div>
 </section>
-
-<script>
-  document.querySelectorAll<HTMLElement>("[data-faq]").forEach((list) => {
-    const items = Array.from(list.querySelectorAll<HTMLElement>(".rl-faq-item"));
-    items.forEach((item) => {
-      const toggle = item.querySelector<HTMLButtonElement>("[data-faq-toggle]");
-      if (!toggle) return;
-      toggle.addEventListener("click", () => {
-        const isOpen = item.dataset.open === "true";
-        // Single-open accordion: close the rest before opening this one.
-        items.forEach((other) => {
-          other.dataset.open = "false";
-          other.querySelector("[data-faq-toggle]")?.setAttribute("aria-expanded", "false");
-        });
-        if (!isOpen) {
-          item.dataset.open = "true";
-          toggle.setAttribute("aria-expanded", "true");
-        }
-      });
-    });
-  });
-</script>
