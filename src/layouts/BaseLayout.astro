@@ -23,6 +23,7 @@ const structuredData = getStructuredData(page);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={site.themeColor} />
+    <link rel="icon" type="image/png" href="/Logo.png" />
 
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
@@ -96,9 +97,10 @@ const structuredData = getStructuredData(page);
 
     <script>
       // Scroll-reveal: reliable cross-browser replacement for animation-timeline:view().
+      // Runs for everyone; under prefers-reduced-motion the CSS turns this into a
+      // gentle opacity-only fade (no vertical travel).
       const reveals = document.querySelectorAll<HTMLElement>(".rl-reveal");
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce || !("IntersectionObserver" in window)) {
+      if (!("IntersectionObserver" in window)) {
         reveals.forEach((el) => el.classList.add("is-visible"));
       } else {
         const io = new IntersectionObserver(

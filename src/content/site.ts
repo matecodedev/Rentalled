@@ -190,7 +190,6 @@ export const site = {
             { key: "Outdoor", value: "3.9 mm", label: "pixel pitch" }
           ],
           media: [
-            { fileName: "1000118370.jpg", category: "Producción en vivo", liveLabel: "En vivo" },
             { fileName: "1000085426.jpg", category: "Evento corporativo", liveLabel: "" }
           ],
           ticker: ["Pantallas LED", "Eventos corporativos", "Eventos sociales", "CABA · Buenos Aires", "Operación técnica propia", "Indoor 2.6mm", "Outdoor 3.9mm", "Producciones en vivo"]
@@ -236,7 +235,6 @@ export const site = {
             { key: "Outdoor", value: "3.9 mm", label: "pixel pitch" }
           ],
           media: [
-            { fileName: "1000118370.jpg", category: "Live production", liveLabel: "Live" },
             { fileName: "1000085426.jpg", category: "Corporate event", liveLabel: "" }
           ],
           ticker: ["LED screens", "Corporate events", "Social events", "Buenos Aires", "In-house technical crew", "Indoor 2.6mm", "Outdoor 3.9mm", "Live productions"]

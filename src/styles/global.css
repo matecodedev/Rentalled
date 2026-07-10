@@ -215,7 +215,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .rl-hero-bento { display: grid; gap: 12px; grid-template-columns: 1fr; }
 .rl-hero-left { display: flex; flex-direction: column; gap: 12px; }
 .rl-hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.rl-hero-media { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.rl-hero-media { display: grid; grid-template-columns: 1fr; gap: 12px; }
 @media (min-width: 1000px) {
   .rl-hero-bento { grid-template-columns: repeat(12, 1fr); align-items: stretch; gap: 14px; }
   .rl-hero-left { grid-column: 1 / 7; gap: 14px; }
@@ -514,11 +514,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .header-actions { justify-content: space-between; width: 100%; }
 }
 
-/* ---- Reduced motion ------------------------------------------------------ */
+/* ---- Reduced motion ------------------------------------------------------
+   We don't go fully static: movement (slides, parallax, looping marquee) is
+   removed, but gentle OPACITY fades stay — they don't trigger vestibular
+   discomfort, so the page still feels alive for everyone. */
+@keyframes rl-fade { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .rl-reveal { opacity: 1 !important; transform: none !important; }
-  .rl-heroel { opacity: 1 !important; transform: none !important; }
+  /* Stop looping / load-time movement */
   .rl-ticker-track { animation: none !important; }
+  .rl-heroel { animation: rl-fade .6s ease both !important; transform: none !important; }
+  /* Scroll reveals fade in without vertical travel */
+  .rl-reveal { transform: none !important; }
+  /* Neutralize movement on hover, keep color/shadow feedback */
+  .rl-feature:hover, .rl-stat:hover, .rl-client:hover,
+  .rl-hero-fig:hover, .rl-pf-tile:hover, .btn:hover,
+  .rl-feature-cta:hover .rl-feature-ctabtn { transform: none !important; }
+  .rl-hero-fig:hover img, .rl-pf-tile:hover img { transform: none !important; }
 }
