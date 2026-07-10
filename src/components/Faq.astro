@@ -1,5 +1,6 @@
 ---
 import { translate, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -7,20 +8,26 @@ export interface Props {
 
 const { page } = Astro.props;
 const locale = page.locale;
+const faq = page.sections.faq;
 ---
 
-<section id="faq" class="section-shell" aria-labelledby="faq-title">
-  <div class="section-heading">
-    <p class="eyebrow">{page.sections.faq.eyebrow}</p>
-    <h2 id="faq-title">{page.sections.faq.title}</h2>
-    <p class="section-body">{page.sections.faq.body}</p>
+<section id="faq" class="rl-faq" aria-labelledby="faq-title">
+  <div class="rl-section-head rl-reveal">
+    <p class="eyebrow rl-eyebrow-accent">{faq.eyebrow}</p>
+    <h2 id="faq-title" class="rl-section-title">{faq.title}</h2>
+    <p class="rl-section-body">{faq.body}</p>
   </div>
 
-  <div class="faq-list">
-    {page.faq.map((item) => (
-      <details class="faq-item">
-        <summary>{translate(item.question, locale)}</summary>
-        <p>{translate(item.answer, locale)}</p>
+  <div class="rl-faq-list" data-faq>
+    {page.faq.map((item, index) => (
+      <details class="rl-faq-item faq-item rl-reveal" open={index === 0 ? true : undefined}>
+        <summary class="rl-faq-q">
+          <span>{translate(item.question, locale)}</span>
+          <span class="rl-faq-icon"><Icon name="plus" size={17} /></span>
+        </summary>
+        <div class="rl-faq-panel" id={`faq-panel-${item.id}`}>
+          <p>{translate(item.answer, locale)}</p>
+        </div>
       </details>
     ))}
   </div>

@@ -15,14 +15,23 @@ const {
   skipLabel = "Skip to main content"
 } = Astro.props;
 const structuredData = getStructuredData(page);
+const closeLabel = page.sections.shell.menuCloseLabel;
+const dialogLabel = page.locale === "es" ? "Imagen ampliada" : "Enlarged image";
 ---
 
 <!doctype html>
-<html lang={page.htmlLang}>
+<html lang={page.htmlLang} data-theme="dark">
   <head>
+    <script is:inline>document.documentElement.classList.add("js");</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={site.themeColor} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preload" href="/fonts/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ClashDisplay-Semibold.woff2" as="font" type="font/woff2" crossorigin />
+
     <Seo page={page} />
     <slot name="head" />
     {structuredData.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
@@ -30,5 +39,90 @@ const structuredData = getStructuredData(page);
   <body class={bodyClass}>
     <a class="skip-link" href="#main">{skipLabel}</a>
     <slot />
+
+    <div class="rl-lightbox" data-lightbox-overlay hidden role="dialog" aria-modal="true" aria-label={dialogLabel}>
+      <button class="rl-lightbox-close" type="button" data-lightbox-close aria-label={closeLabel}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <figure class="rl-lightbox-figure">
+        <img data-lightbox-image src="" alt="" width="1600" height="1200" />
+      </figure>
+    </div>
+
+    <script>
+      // Image lightbox — shared by hero + portfolio. Opens on [data-lightbox] click,
+      // closes on X, backdrop click or Escape. Locks body scroll while open.
+      const overlay = document.querySelector<HTMLElement>("[data-lightbox-overlay]");
+      const lbImg = document.querySelector<HTMLImageElement>("[data-lightbox-image]");
+      let lastFocused: HTMLElement | null = null;
+      let hideTimer: number | null = null;
+
+      if (overlay && lbImg) {
+        const open = (src: string, alt: string, trigger: HTMLElement) => {
+          if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+          lastFocused = trigger;
+          lbImg.src = src;
+          lbImg.alt = alt;
+          overlay.hidden = false;
+          requestAnimationFrame(() => overlay.classList.add("is-open"));
+          document.body.style.overflow = "hidden";
+          document.querySelectorAll<HTMLElement>("body > *:not([data-lightbox-overlay]):not(script)").forEach((el) => el.setAttribute("inert", ""));
+          overlay.querySelector<HTMLElement>("[data-lightbox-close]")?.focus();
+        };
+        const close = () => {
+          overlay.classList.remove("is-open");
+          document.body.style.overflow = "";
+          document.querySelectorAll<HTMLElement>("body > *:not([data-lightbox-overlay]):not(script)").forEach((el) => el.removeAttribute("inert"));
+          hideTimer = window.setTimeout(() => {
+            overlay.hidden = true;
+            lbImg.src = "";
+            hideTimer = null;
+          }, 240);
+          lastFocused?.focus();
+        };
+        // Event delegation covers dynamically cloned tiles (carousel loop) too.
+        document.addEventListener("click", (event) => {
+          const trigger = (event.target as HTMLElement).closest<HTMLElement>("[data-lightbox]");
+          if (!trigger) return;
+          const src = trigger.getAttribute("data-lightbox") || "";
+          const inner = trigger.querySelector("img");
+          if (inner) {
+            lbImg.width = Number(inner.getAttribute("width")) || 1600;
+            lbImg.height = Number(inner.getAttribute("height")) || 1200;
+          }
+          open(src, inner?.getAttribute("alt") || "", trigger);
+        });
+        overlay.addEventListener("click", (event) => {
+          const target = event.target as HTMLElement;
+          if (target === overlay || target.closest("[data-lightbox-close]")) close();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !overlay.hidden) close();
+        });
+      }
+    </script>
+
+    <script>
+      // Scroll-reveal: reliable cross-browser replacement for animation-timeline:view().
+      // Runs for everyone; under prefers-reduced-motion the CSS turns this into a
+      // gentle opacity-only fade (no vertical travel).
+      const reveals = document.querySelectorAll<HTMLElement>(".rl-reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach((el) => el.classList.add("is-visible"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+        );
+        reveals.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>

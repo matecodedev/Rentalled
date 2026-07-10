@@ -1,23 +1,47 @@
 ---
 import type { LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
 
 export interface Props {
   page: LocalizedPage;
 }
 
 const { page } = Astro.props;
+const about = page.sections.about;
 ---
 
-<section id="about" class="section-shell split-section" aria-labelledby="about-title">
-  <div>
-    <p class="eyebrow">{page.sections.about.eyebrow}</p>
-    <h2 id="about-title">{page.sections.about.title}</h2>
-  </div>
-  <div class="text-panel">
-    <p class="section-body">{page.sections.about.body}</p>
-    <p class="stat-card">{page.sections.about.stat}</p>
-    <ul class="check-list">
-      {page.sections.about.details.map((detail) => <li>{detail}</li>)}
-    </ul>
+<section id="about" class="rl-about" aria-labelledby="about-title">
+  <div class="rl-about-grid rl-reveal">
+    <div class="rl-about-copy">
+      <p class="eyebrow rl-eyebrow-accent">{about.eyebrow}</p>
+      <h2 id="about-title" class="rl-about-h">{about.title}</h2>
+      <p class="rl-about-body">{about.body}</p>
+
+      <div class="rl-about-stat">
+        <span class="rl-about-num rl-grad">{about.years}</span>
+        <span class="rl-about-yearslabel">{about.yearsLabel}</span>
+      </div>
+
+      <ul class="rl-about-list">
+        {about.details.map((detail) => (
+          <li>
+            <span class="rl-check"><Icon name="check" size={15} /></span>
+            {detail}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="rl-about-media">
+      <img
+        class="rl-about-img"
+        src={`/portfolio/${about.imageFileName}`}
+        alt={about.imageAlt}
+        width={about.imageWidth}
+        height={about.imageHeight}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
   </div>
 </section>

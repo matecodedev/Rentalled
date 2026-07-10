@@ -57,7 +57,7 @@ const expectedPages = [
       },
       {
         question: "¿Cómo se solicita una cotización?",
-        answer: "Puede escribir por WhatsApp con fecha, lugar, horario y tipo de evento para recibir una propuesta."
+        answer: "Podés escribir por WhatsApp con fecha, lugar, horario y tipo de evento para recibir una propuesta."
       },
       {
         question: "¿Con cuánto tiempo conviene consultar?",
@@ -271,7 +271,7 @@ const validateJsonLd = (page, html) => {
   const service = findSchema(schemas, "Service");
 
   check(organization?.url === urls.es, `${label} Organization URL must be ${urls.es}.`);
-  check(organization?.logo === expectedLaunch.ogImageUrl, `${label} Organization logo must use the PNG OG image.`);
+  check(organization?.logo === `${baseUrl}/logo.webp`, `${label} Organization logo must use the production logo.`);
   check(organization?.image === expectedLaunch.ogImageUrl, `${label} Organization image must use the PNG OG image.`);
   check(Array.isArray(organization?.sameAs) && organization.sameAs.includes(expectedLaunch.instagramUrl), `${label} Organization sameAs must include ${expectedLaunch.instagramUrl}.`);
 

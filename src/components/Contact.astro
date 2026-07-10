@@ -1,5 +1,7 @@
 ---
 import { site, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
+import BrandIcon from "./BrandIcon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -7,27 +9,41 @@ export interface Props {
 
 const { page } = Astro.props;
 const locale = page.locale;
+const contact = page.sections.contact;
 ---
 
-<section id="contact" class="section-shell contact-section" aria-labelledby="contact-title">
-  <div>
-    <p class="eyebrow">{page.sections.contact.eyebrow}</p>
-    <h2 id="contact-title">{page.sections.contact.title}</h2>
-    <p class="section-body">{page.sections.contact.body}</p>
-  </div>
+<section id="contact" class="rl-contact" aria-labelledby="contact-title">
+  <div class="rl-contact-card rl-reveal">
+    <div class="rl-contact-inner">
+      <p class="eyebrow rl-eyebrow-accent">{contact.eyebrow}</p>
+      <h2 id="contact-title" class="rl-contact-h">{contact.title}</h2>
+      <p class="rl-contact-body">{contact.body}</p>
 
-  <div class="contact-panel">
-    <p class="contact-location">
-      <span>{page.sections.contact.locationLabel}</span>
-      {site.contact.location[locale]}
-    </p>
-    <div class="cta-row">
-      <a class="button button-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
-        {page.sections.contact.whatsappLabel}
-      </a>
-      <a class="button button-secondary" href={site.contact.instagramUrl} target="_blank" rel="noopener noreferrer" translate="no">
-        {page.sections.contact.instagramLabel}
-      </a>
+      <div class="rl-contact-actions">
+        <a class="btn btn-lg btn-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+          <BrandIcon name="whatsapp" size={18} />
+          {contact.whatsappLabel}
+        </a>
+        <a class="btn btn-lg btn-ghost" href={site.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
+          <BrandIcon name="instagram" size={18} />
+          {contact.instagramLabel}
+        </a>
+      </div>
+
+      <dl class="rl-contact-meta">
+        <div>
+          <dt class="eyebrow">{contact.locationLabel}</dt>
+          <dd><Icon name="map-pin" size={16} />{site.contact.location[locale]}</dd>
+        </div>
+        <div>
+          <dt class="eyebrow">WhatsApp</dt>
+          <dd class="mono"><Icon name="phone" size={15} />{site.contact.whatsappDisplay}</dd>
+        </div>
+        <div>
+          <dt class="eyebrow">Instagram</dt>
+          <dd>{site.contact.instagramHandle}</dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>

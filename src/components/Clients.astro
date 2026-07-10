@@ -1,5 +1,7 @@
 ---
-import { translate, type LocalizedPage } from "@content/site";
+import { site, translate, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
+import BrandIcon from "./BrandIcon.astro";
 
 export interface Props {
   page: LocalizedPage;
@@ -7,21 +9,39 @@ export interface Props {
 
 const { page } = Astro.props;
 const locale = page.locale;
+const clients = page.sections.clients;
+const ctaTitle = locale === "es" ? "¿Tu equipo produce eventos?" : "Does your team produce events?";
+const ctaBody = locale === "es" ? "Sumá una operación LED confiable a tu próxima producción." : "Add reliable LED operation to your next production.";
+const ctaLabel = locale === "es" ? "Hablemos" : "Let's talk";
 ---
 
-<section id="clients" class="section-shell split-section" aria-labelledby="clients-title">
-  <div>
-    <p class="eyebrow">{page.sections.clients.eyebrow}</p>
-    <h2 id="clients-title">{page.sections.clients.title}</h2>
-    <p class="section-body">{page.sections.clients.body}</p>
+<section id="clients" class="rl-section" aria-labelledby="clients-title">
+  <div class="rl-section-head rl-reveal">
+    <p class="eyebrow rl-eyebrow-accent">{clients.eyebrow}</p>
+    <h2 id="clients-title" class="rl-section-title">{clients.title}</h2>
+    <p class="rl-section-body">{clients.body}</p>
   </div>
 
-  <div class="client-list">
-    {page.clients.map((client) => (
-      <article class="client-item">
+  <div class="rl-cards">
+    {page.clients.map((client, index) => (
+      <article class="rl-feature rl-feature-client rl-reveal" data-delay={(index % 3) + 1}>
+        <span class="rl-feature-ic rl-feature-ic-solid"><Icon name={client.icon} size={20} /></span>
         <h3>{translate(client.title, locale)}</h3>
         <p>{translate(client.description, locale)}</p>
+        <span class="rl-feature-arrow" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
       </article>
     ))}
+
+    <a
+      class="rl-feature rl-feature-cta rl-reveal"
+      data-delay="3"
+      href={site.contact.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <h3>{ctaTitle}</h3>
+      <p>{ctaBody}</p>
+      <span class="rl-feature-ctabtn"><BrandIcon name="whatsapp" size={17} />{ctaLabel}</span>
+    </a>
   </div>
 </section>

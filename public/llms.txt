@@ -1,0 +1,27 @@
+# Rental Led
+
+> Rental Led rents and operates LED screens for corporate and social events in CABA and Buenos Aires, Argentina.
+
+Rental Led provides LED screen rental, setup, live operation, and technical support for events. The service is aimed at companies, agencies, production teams, venues, and social event organizers. The site is available in Spanish and English.
+
+## Core services
+- LED screens for corporate events, launches, conferences, congresses, and brand activations.
+- LED screens for social events, shows, celebrations, and private experiences.
+- Technical planning, setup, live operation, and event-day support with an in-house crew.
+- Coordination with venues, agencies, producers, sound, lighting, and broader event production teams.
+
+## Technical details
+- Indoor LED screens: 2.6 mm pixel pitch.
+- Outdoor LED screens: 3.9 mm pixel pitch.
+
+## Service area
+- CABA (Ciudad Autónoma de Buenos Aires) and Buenos Aires Province, Argentina.
+
+## Contact and booking
+- WhatsApp: +54 9 11 4973 4510 — https://wa.me/5491149734510
+- Instagram: @rentalled.ar — https://www.instagram.com/rentalled.ar
+
+## Canonical pages
+- Spanish homepage: https://rentalled.com.ar/
+- English homepage: https://rentalled.com.ar/en/
+- Sitemap: https://rentalled.com.ar/sitemap-index.xml

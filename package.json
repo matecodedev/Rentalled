@@ -13,6 +13,7 @@
     "build": "astro build",
     "check:seo": "node scripts/check-seo.mjs",
     "check:final": "node scripts/check-final.mjs",
+    "verify": "npm run build && npm run check:seo && npm run check:final",
     "preview": "astro preview",
     "astro": "astro"
   },
