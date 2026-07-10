@@ -45,3 +45,107 @@ const zoomLabel = locale === "es" ? "Ampliar imagen" : "Enlarge image";
     ))}
   </div>
 </section>
+
+<script>
+  // Auto-advancing, seamless-loop carousel — mobile only.
+  // Duplicates the tiles so the loop never rewinds; pauses on interaction,
+  // when off-screen, when the tab is hidden, and under reduced motion.
+  const grid = document.querySelector<HTMLElement>("[data-pf-grid]");
+  if (grid) {
+    const mqMobile = window.matchMedia("(max-width: 699px)");
+    const mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const DELAY = 3400;
+
+    let tiles: HTMLElement[] = [];
+    let count = 0;
+    let index = 0;
+    let timer: number | null = null;
+    let resumeTimer: number | null = null;
+    let cloned = false;
+    let inView = true;
+
+    const centerTo = (tile: HTMLElement, behavior: ScrollBehavior) => {
+      const left = tile.offsetLeft - (grid.clientWidth - tile.offsetWidth) / 2;
+      grid.scrollTo({ left: Math.max(0, left), behavior });
+    };
+
+    const advance = () => {
+      index += 1;
+      centerTo(tiles[index], "smooth");
+      if (index >= count) {
+        // We're now showing a clone of the first image — jump back invisibly.
+        window.setTimeout(() => {
+          index = 0;
+          centerTo(tiles[0], "auto");
+        }, 640);
+      }
+    };
+
+    const play = () => {
+      if (timer || !mqMobile.matches || mqReduce.matches || !inView || count < 2) return;
+      timer = window.setInterval(advance, DELAY);
+    };
+    const pause = () => {
+      if (timer) { window.clearInterval(timer); timer = null; }
+    };
+    const pauseThenResume = () => {
+      pause();
+      if (resumeTimer) window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(play, 4500);
+    };
+
+    const cloneTiles = () => {
+      if (cloned) return;
+      const originals = Array.from(grid.querySelectorAll<HTMLElement>(".rl-pf-tile"));
+      count = originals.length;
+      originals.forEach((tile) => {
+        const clone = tile.cloneNode(true) as HTMLElement;
+        clone.setAttribute("aria-hidden", "true");
+        clone.setAttribute("tabindex", "-1");
+        clone.dataset.clone = "true";
+        grid.appendChild(clone);
+      });
+      tiles = Array.from(grid.querySelectorAll<HTMLElement>(".rl-pf-tile"));
+      cloned = true;
+    };
+    const removeClones = () => {
+      if (!cloned) return;
+      grid.querySelectorAll<HTMLElement>('[data-clone="true"]').forEach((el) => el.remove());
+      cloned = false;
+      index = 0;
+      grid.scrollTo({ left: 0, behavior: "auto" });
+    };
+
+    const setup = () => {
+      if (mqMobile.matches) {
+        cloneTiles();
+        play();
+      } else {
+        pause();
+        removeClones();
+      }
+    };
+
+    ["pointerdown", "touchstart", "wheel"].forEach((evt) =>
+      grid.addEventListener(evt, pauseThenResume, { passive: true })
+    );
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        (entries) => {
+          inView = entries[0].isIntersecting;
+          if (inView) play();
+          else pause();
+        },
+        { threshold: 0.2 }
+      ).observe(grid);
+    }
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) pause();
+      else play();
+    });
+    mqMobile.addEventListener("change", setup);
+
+    setup();
+  }
+</script>

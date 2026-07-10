@@ -56,7 +56,6 @@ const structuredData = getStructuredData(page);
       // closes on X, backdrop click or Escape. Locks body scroll while open.
       const overlay = document.querySelector<HTMLElement>("[data-lightbox-overlay]");
       const lbImg = document.querySelector<HTMLImageElement>("[data-lightbox-image]");
-      const triggers = document.querySelectorAll<HTMLElement>("[data-lightbox]");
       let lastFocused: HTMLElement | null = null;
 
       if (overlay && lbImg) {
@@ -78,12 +77,13 @@ const structuredData = getStructuredData(page);
           }, 240);
           lastFocused?.focus();
         };
-        triggers.forEach((trigger) => {
-          trigger.addEventListener("click", () => {
-            const src = trigger.getAttribute("data-lightbox") || "";
-            const inner = trigger.querySelector("img");
-            open(src, inner?.getAttribute("alt") || "", trigger);
-          });
+        // Event delegation covers dynamically cloned tiles (carousel loop) too.
+        document.addEventListener("click", (event) => {
+          const trigger = (event.target as HTMLElement).closest<HTMLElement>("[data-lightbox]");
+          if (!trigger) return;
+          const src = trigger.getAttribute("data-lightbox") || "";
+          const inner = trigger.querySelector("img");
+          open(src, inner?.getAttribute("alt") || "", trigger);
         });
         overlay.addEventListener("click", (event) => {
           const target = event.target as HTMLElement;
