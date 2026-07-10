@@ -515,7 +515,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .site-header[data-nav-ready="true"] { align-items: center; flex-wrap: nowrap; }
   .site-header[data-nav-ready="true"] .menu-toggle { display: inline-flex; }
   .site-header[data-nav-ready="true"] .site-nav { position: fixed; inset: 66px 12px auto 12px; opacity: 0; visibility: hidden; transform: translateY(-10px); }
-  [data-menu-open="true"] .site-nav { opacity: 1; visibility: visible; transform: none; }
+  .site-header[data-nav-ready="true"][data-menu-open="true"] .site-nav { opacity: 1; visibility: visible; transform: none; }
   .nav-links { flex-direction: column; align-items: stretch; gap: 4px; }
   .nav-links a { padding: 12px; font-size: 15px; }
   .header-actions { justify-content: space-between; width: 100%; }
