@@ -62,6 +62,18 @@ const expectedPages = [
       {
         question: "¿Con cuánto tiempo conviene consultar?",
         answer: "Recomendamos consultar con anticipación para validar disponibilidad, medidas, accesos y requerimientos técnicos."
+      },
+      {
+        question: "¿Cuánto cuesta alquilar una pantalla LED?",
+        answer: "El costo depende del tamaño de la pantalla, el tipo de evento, la duración y los requerimientos técnicos. Escribinos por WhatsApp con los detalles y te pasamos una cotización a medida."
+      },
+      {
+        question: "¿Alquilan pantallas LED para congresos médicos?",
+        answer: "Sí. Trabajamos con laboratorios y organizadores en congresos, simposios y seminarios médicos, incluyendo salas plenarias y salas paralelas, con operación técnica en vivo."
+      },
+      {
+        question: "¿Qué diferencia hay entre el pitch 2.6 mm y el 3.9 mm?",
+        answer: "El pitch es la distancia entre píxeles: cuanto menor, mayor definición de cerca. El de 2.6 mm es ideal para indoor, con el público cerca; el de 3.9 mm rinde en outdoor y a mayores distancias."
       }
     ]
   },
@@ -94,6 +106,18 @@ const expectedPages = [
       {
         question: "How far in advance should I contact you?",
         answer: "We recommend contacting us early to confirm availability, dimensions, access and technical requirements."
+      },
+      {
+        question: "How much does it cost to rent an LED screen?",
+        answer: "The cost depends on screen size, event type, duration and technical requirements. Message us on WhatsApp with the details and we'll send a tailored quote."
+      },
+      {
+        question: "Do you rent LED screens for medical congresses?",
+        answer: "Yes. We work with laboratories and organizers on medical congresses, symposia and seminars, including plenary halls and parallel sessions, with live technical operation."
+      },
+      {
+        question: "What's the difference between 2.6 mm and 3.9 mm pitch?",
+        answer: "Pitch is the distance between pixels: the smaller it is, the sharper the image up close. The 2.6 mm one is ideal indoors, with the audience nearby; the 3.9 mm one performs outdoors and at greater distances."
       }
     ]
   }

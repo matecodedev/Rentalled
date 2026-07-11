@@ -155,7 +155,10 @@ export const site = {
     { id: "screens", question: { es: "¿Qué pantallas LED ofrecen?", en: "What LED screens do you offer?" }, answer: { es: "Contamos con pantallas indoor pitch 2.6 mm y outdoor pitch 3.9 mm para distintos contextos.", en: "We provide indoor 2.6 mm pitch and outdoor 3.9 mm pitch LED screens for different contexts." } },
     { id: "operation", question: { es: "¿Incluyen armado y operación?", en: "Is setup and operation included?" }, answer: { es: "Sí. El servicio contempla montaje, operación técnica y soporte durante el evento.", en: "Yes. The service includes setup, technical operation and support during the event." } },
     { id: "quote", question: { es: "¿Cómo se solicita una cotización?", en: "How do I request a quote?" }, answer: { es: "Podés escribir por WhatsApp con fecha, lugar, horario y tipo de evento para recibir una propuesta.", en: "Contact us on WhatsApp with the date, venue, schedule and event type to receive a proposal." } },
-    { id: "timing", question: { es: "¿Con cuánto tiempo conviene consultar?", en: "How far in advance should I contact you?" }, answer: { es: "Recomendamos consultar con anticipación para validar disponibilidad, medidas, accesos y requerimientos técnicos.", en: "We recommend contacting us early to confirm availability, dimensions, access and technical requirements." } }
+    { id: "timing", question: { es: "¿Con cuánto tiempo conviene consultar?", en: "How far in advance should I contact you?" }, answer: { es: "Recomendamos consultar con anticipación para validar disponibilidad, medidas, accesos y requerimientos técnicos.", en: "We recommend contacting us early to confirm availability, dimensions, access and technical requirements." } },
+    { id: "cost", question: { es: "¿Cuánto cuesta alquilar una pantalla LED?", en: "How much does it cost to rent an LED screen?" }, answer: { es: "El costo depende del tamaño de la pantalla, el tipo de evento, la duración y los requerimientos técnicos. Escribinos por WhatsApp con los detalles y te pasamos una cotización a medida.", en: "The cost depends on screen size, event type, duration and technical requirements. Message us on WhatsApp with the details and we'll send a tailored quote." } },
+    { id: "medical", question: { es: "¿Alquilan pantallas LED para congresos médicos?", en: "Do you rent LED screens for medical congresses?" }, answer: { es: "Sí. Trabajamos con laboratorios y organizadores en congresos, simposios y seminarios médicos, incluyendo salas plenarias y salas paralelas, con operación técnica en vivo.", en: "Yes. We work with laboratories and organizers on medical congresses, symposia and seminars, including plenary halls and parallel sessions, with live technical operation." } },
+    { id: "pitch", question: { es: "¿Qué diferencia hay entre el pitch 2.6 mm y el 3.9 mm?", en: "What's the difference between 2.6 mm and 3.9 mm pitch?" }, answer: { es: "El pitch es la distancia entre píxeles: cuanto menor, mayor definición de cerca. El de 2.6 mm es ideal para indoor, con el público cerca; el de 3.9 mm rinde en outdoor y a mayores distancias.", en: "Pitch is the distance between pixels: the smaller it is, the sharper the image up close. The 2.6 mm one is ideal indoors, with the audience nearby; the 3.9 mm one performs outdoors and at greater distances." } }
   ],
   portfolio: [
     { id: "screen-01", fileName: "1000085426.webp", width: 900, height: 1600, size: "big", alt: { es: "Pantalla LED en evento con operación técnica", en: "LED screen at an event with technical operation" }, category: { es: "Evento técnico", en: "Technical event" }, featured: true },
@@ -378,6 +381,14 @@ export const getStructuredData = (page: LocalizedPage): JsonLdObject[] => {
       logo: toAbsoluteUrl("/logo.webp"),
       image: imageUrl,
       knowsLanguage: ["Spanish", "English"],
+      knowsAbout: [
+        "Alquiler de pantallas LED",
+        "Pantallas LED indoor",
+        "Pantallas LED outdoor",
+        "Producción técnica de eventos",
+        "Congresos y simposios médicos",
+        "Eventos corporativos y lanzamientos de producto"
+      ],
       sameAs: [site.contact.instagramUrl],
       contactPoint: [
         {
