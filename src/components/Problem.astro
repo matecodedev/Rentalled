@@ -1,0 +1,45 @@
+---
+import type { LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+const problem = page.sections.problem;
+---
+
+<section id="problem" class="rl-section" aria-labelledby="problem-title">
+  <div class="rl-section-head rl-reveal">
+    <p class="eyebrow rl-eyebrow-accent">{problem.eyebrow}</p>
+    <h2 id="problem-title" class="rl-section-title">{problem.title}</h2>
+    <p class="rl-section-body">{problem.body}</p>
+  </div>
+
+  <div class="rl-contrast rl-reveal">
+    <div class="rl-contrast-col rl-contrast-risk">
+      <p class="rl-contrast-label">{problem.riskLabel}</p>
+      <ul class="rl-contrast-list">
+        {problem.risks.map((risk) => (
+          <li>
+            <span class="rl-contrast-mark rl-contrast-mark-x" aria-hidden="true"></span>
+            {risk}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="rl-contrast-col rl-contrast-win">
+      <p class="rl-contrast-label rl-contrast-label-win">{problem.solutionLabel}</p>
+      <ul class="rl-contrast-list">
+        {problem.solutions.map((solution) => (
+          <li>
+            <span class="rl-contrast-mark rl-contrast-mark-check" aria-hidden="true"><Icon name="check" size={14} /></span>
+            {solution}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

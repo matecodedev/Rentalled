@@ -1,0 +1,40 @@
+---
+import { site, type LocalizedPage } from "@content/site";
+import Icon from "./Icon.astro";
+import BrandIcon from "./BrandIcon.astro";
+
+export interface Props {
+  page: LocalizedPage;
+}
+
+const { page } = Astro.props;
+const locale = page.locale;
+const process = page.sections.process;
+const ctaLabel = locale === "es" ? "Cotizar por WhatsApp" : "Request a WhatsApp quote";
+---
+
+<section id="process" class="rl-section" aria-labelledby="process-title">
+  <div class="rl-section-head rl-reveal">
+    <p class="eyebrow rl-eyebrow-accent">{process.eyebrow}</p>
+    <h2 id="process-title" class="rl-section-title">{process.title}</h2>
+    <p class="rl-section-body">{process.body}</p>
+  </div>
+
+  <div class="rl-cards">
+    {process.steps.map((step, index) => (
+      <article class="rl-feature rl-reveal" data-delay={(index % 3) + 1}>
+        <span class="rl-feature-num">{String(index + 1).padStart(2, "0")}</span>
+        <span class="rl-feature-ic"><Icon name={step.icon} size={22} /></span>
+        <h3>{step.title}</h3>
+        <p>{step.body}</p>
+      </article>
+    ))}
+  </div>
+
+  <div class="rl-process-cta rl-reveal">
+    <a class="btn btn-lg btn-primary" href={site.contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+      <BrandIcon name="whatsapp" size={17} />
+      {ctaLabel}
+    </a>
+  </div>
+</section>

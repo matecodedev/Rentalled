@@ -71,6 +71,8 @@ export type LandingSections = {
     imageTag: string;
   };
   services: SectionCopy;
+  problem: SectionCopy & { riskLabel: string; risks: string[]; solutionLabel: string; solutions: string[] };
+  process: SectionCopy & { steps: { icon: string; title: string; body: string }[] };
   portfolio: SectionCopy & { cta: string };
   clients: SectionCopy;
   faq: SectionCopy;
@@ -212,6 +214,35 @@ export const site = {
           imageTag: "Operación en vivo"
         },
         services: { eyebrow: "Servicios", title: "Pantallas LED para cada formato profesional", body: "Trabajamos con productoras, agencias, laboratorios y organizadores de congresos que necesitan impacto visual y una operación técnica sin fisuras." },
+        problem: {
+          eyebrow: "El riesgo real",
+          title: "En un congreso o un lanzamiento, la pantalla no puede fallar",
+          body: "Cuando sube el orador o arranca el simposio, no hay segunda toma. Un parpadeo, un desfasaje o un operador que no está arruina el momento más importante del evento.",
+          riskLabel: "Sin un operador técnico dedicado",
+          risks: [
+            "La pantalla titila o corta justo en la charla principal",
+            "Nadie resuelve en vivo si algo se cae",
+            "El contenido se ve borroso o mal escalado",
+            "El armado se atrasa y llegás sobre la hora"
+          ],
+          solutionLabel: "Con Rental Led",
+          solutions: [
+            "Equipo técnico propio operando en vivo, de principio a fin",
+            "Un técnico dedicado atento durante toda la jornada",
+            "Contenido probado y calibrado antes de abrir puertas",
+            "Montaje planificado con anticipación, sin corridas"
+          ]
+        },
+        process: {
+          eyebrow: "Cómo trabajamos",
+          title: "Tres pasos, cero improvisación",
+          body: "Un proceso claro para que llegues al día del evento sin sorpresas.",
+          steps: [
+            { icon: "phone", title: "Nos contás tu evento", body: "Fecha, sede, tipo de evento y necesidades técnicas. Te respondemos con una propuesta clara y sin vueltas." },
+            { icon: "wrench", title: "Planificamos y montamos", body: "Definimos medidas, accesos y tiempos. Llegamos con anticipación y dejamos todo probado antes de que empiece." },
+            { icon: "presentation", title: "Operamos en vivo", body: "Un técnico opera la pantalla durante todo el evento y resuelve cualquier ajuste en el momento." }
+          ]
+        },
         portfolio: { eyebrow: "Portfolio real", title: "Pantallas en congresos, eventos y producciones", body: "Una selección de montajes reales con pantallas LED, operación técnica y contenido visual en distintos formatos profesionales.", cta: "Pedir ejemplos de tu tipo de evento" },
         clients: { eyebrow: "Clientes", title: "Trabajamos detrás de escena de tu evento", body: "Sin logos inventados ni testimonios fabricados. El foco está en los equipos que necesitan una operación LED confiable: laboratorios, productoras, agencias y organizadores de congresos." },
         faq: { eyebrow: "Preguntas frecuentes", title: "Información clave antes de cotizar", body: "Respuestas directas sobre cobertura, tipos de eventos, operación técnica, tiempos y soporte." },
@@ -259,6 +290,35 @@ export const site = {
           imageTag: "Live operation"
         },
         services: { eyebrow: "Services", title: "LED screens for every professional format", body: "We work with production companies, agencies, laboratories and congress organizers that need visual impact and flawless technical operation." },
+        problem: {
+          eyebrow: "The real risk",
+          title: "At a congress or a launch, the screen cannot fail",
+          body: "When the speaker walks on stage or the symposium starts, there is no second take. A flicker, a sync issue or a missing operator ruins the most important moment of the event.",
+          riskLabel: "Without a dedicated technical operator",
+          risks: [
+            "The screen flickers or cuts out during the main talk",
+            "No one solves it live if something goes down",
+            "Content looks blurry or badly scaled",
+            "Setup runs late and you finish just in time"
+          ],
+          solutionLabel: "With Rental Led",
+          solutions: [
+            "Our own technical crew operating live, from start to finish",
+            "A dedicated technician watching the operation all day",
+            "Content tested and calibrated before doors open",
+            "Setup planned well in advance, no rush"
+          ]
+        },
+        process: {
+          eyebrow: "How we work",
+          title: "Three steps, zero improvisation",
+          body: "A clear process so you reach event day with no surprises.",
+          steps: [
+            { icon: "phone", title: "You tell us about your event", body: "Date, venue, event type and technical needs. We reply with a clear, straightforward proposal." },
+            { icon: "wrench", title: "We plan and set up", body: "We define dimensions, access and timing. We arrive early and leave everything tested before it starts." },
+            { icon: "presentation", title: "We operate live", body: "A technician runs the screen throughout the event and handles any adjustment on the spot." }
+          ]
+        },
         portfolio: { eyebrow: "Real portfolio", title: "Screens across congresses, events and productions", body: "A selection of real setups with LED screens, technical operation and visual content across different professional formats.", cta: "Ask for examples for your type of event" },
         clients: { eyebrow: "Clients", title: "We work behind the scenes of your event", body: "No invented logos or fabricated testimonials. The focus is on the teams that need reliable LED operation: laboratories, production companies, agencies and congress organizers." },
         faq: { eyebrow: "FAQ", title: "Key details before requesting a quote", body: "Direct answers about coverage, event types, technical operation, timing and support." },

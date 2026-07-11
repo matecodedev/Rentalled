@@ -7,6 +7,8 @@ import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import Hero from "../../components/Hero.astro";
 import Portfolio from "../../components/Portfolio.astro";
+import Problem from "../../components/Problem.astro";
+import Process from "../../components/Process.astro";
 import Services from "../../components/Services.astro";
 import { getPage } from "@content/site";
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -19,7 +21,9 @@ const page = getPage("en");
   <main id="main" class="landing-main">
     <Hero page={page} />
     <About page={page} />
+    <Problem page={page} />
     <Services page={page} />
+    <Process page={page} />
     <Portfolio page={page} />
     <Clients page={page} />
     <Faq page={page} />
