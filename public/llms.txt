@@ -1,18 +1,27 @@
 # Rental Led
 
-> Rental Led rents and operates LED screens for corporate and social events in CABA and Buenos Aires, Argentina.
+> Rental Led rents and operates professional LED screens for congresses, corporate events, and product launches in CABA and Buenos Aires, Argentina, with an in-house technical crew.
 
-Rental Led provides LED screen rental, setup, live operation, and technical support for events. The service is aimed at companies, agencies, production teams, venues, and social event organizers. The site is available in Spanish and English.
+Rental Led provides LED screen rental, setup, live operation, and technical support. The primary focus is medical and scientific congresses, symposia, seminars, corporate events, product launches, and brand activations — working with laboratories, production companies, agencies, and congress organizers. High-profile social events are covered as a secondary service. The site is available in Spanish and English.
 
 ## Core services
-- LED screens for corporate events, launches, conferences, congresses, and brand activations.
-- LED screens for social events, shows, celebrations, and private experiences.
-- Technical planning, setup, live operation, and event-day support with an in-house crew.
-- Coordination with venues, agencies, producers, sound, lighting, and broader event production teams.
+- LED screens for medical and scientific congresses, symposia, and seminars: plenary halls, parallel sessions, and content for technical presentations.
+- LED screens for corporate events, product launches, conventions, conferences, and brand activations.
+- Precise execution for production companies and agencies.
+- Setup, live operation, and event-day technical support with an in-house crew (never outsourced).
+- Coordination with venues, sound, lighting, staging, and technical direction.
+- High-profile social events (secondary).
+
+## Why Rental Led
+- In-house technical crew operating live from start to finish — not outsourced.
+- A dedicated technician watches the operation throughout the event.
+- Content tested and calibrated before doors open.
+- Setup planned in advance, without last-minute rushes.
 
 ## Technical details
 - Indoor LED screens: 2.6 mm pixel pitch.
 - Outdoor LED screens: 3.9 mm pixel pitch.
+- 12+ years of experience in events.
 
 ## Service area
 - CABA (Ciudad Autónoma de Buenos Aires) and Buenos Aires Province, Argentina.
