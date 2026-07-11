@@ -134,22 +134,22 @@ export const site = {
     { id: "contact", href: "#contact", label: { es: "Contacto", en: "Contact" } }
   ],
   services: [
-    { id: "corporate", icon: "building-2", title: { es: "Pantallas LED para eventos corporativos", en: "LED screens for corporate events" }, description: { es: "Soluciones visuales para lanzamientos, congresos, conferencias y activaciones de marca.", en: "Visual solutions for launches, conferences, conventions and brand activations." } },
-    { id: "social", icon: "sparkles", title: { es: "Pantallas LED para eventos sociales", en: "LED screens for social events" }, description: { es: "Presencia visual de alto impacto para celebraciones, shows y experiencias privadas.", en: "High-impact visual presence for celebrations, shows and private experiences." } },
-    { id: "operation", icon: "wrench", title: { es: "Armado, operación y soporte técnico", en: "Setup, operation and technical support" }, description: { es: "Equipo técnico propio para montaje, operación en vivo y asistencia durante el evento.", en: "In-house technical crew for setup, live operation and event support." } },
-    { id: "brands", icon: "megaphone", title: { es: "Marcas, agencias y productoras", en: "Brands, agencies and producers" }, description: { es: "Acompañamiento para campañas, presentaciones y contenidos que necesitan ejecución precisa.", en: "Support for campaigns, presentations and content that require precise execution." } },
-    { id: "venues", icon: "warehouse", title: { es: "Salones, venues y producción integral", en: "Venues and full production" }, description: { es: "Integración con equipos de venue, sonido, iluminación y producción para una operación ordenada.", en: "Coordination with venue, audio, lighting and production teams for a reliable operation." } }
+    { id: "congresses", icon: "presentation", title: { es: "Congresos, simposios y seminarios", en: "Congresses, symposia and seminars" }, description: { es: "Soporte visual para congresos médicos y científicos: salas plenarias, salas paralelas y contenido para presentaciones técnicas.", en: "Visual support for medical and scientific congresses: plenary halls, parallel sessions and content for technical presentations." } },
+    { id: "corporate", icon: "sparkles", title: { es: "Lanzamientos y eventos corporativos", en: "Launches and corporate events" }, description: { es: "Pantallas LED para lanzamientos de producto, convenciones, conferencias y activaciones de marca.", en: "LED screens for product launches, conventions, conferences and brand activations." } },
+    { id: "producers", icon: "clapperboard", title: { es: "Productoras y agencias", en: "Production companies and agencies" }, description: { es: "Ejecución precisa para campañas, presentaciones y contenidos que no admiten improvisación.", en: "Precise execution for campaigns, presentations and content that leaves no room for improvisation." } },
+    { id: "operation", icon: "wrench", title: { es: "Armado, operación y soporte técnico", en: "Setup, operation and technical support" }, description: { es: "Equipo técnico propio para montaje, operación en vivo y asistencia durante todo el evento.", en: "In-house technical crew for setup, live operation and support throughout the event." } },
+    { id: "social", icon: "party-popper", title: { es: "Eventos sociales de alto perfil", en: "High-profile social events" }, description: { es: "Presencia visual de primer nivel para celebraciones y experiencias privadas exigentes.", en: "First-class visual presence for demanding celebrations and private experiences." } }
   ],
   clients: [
-    { id: "companies", icon: "building-2", title: { es: "Empresas", en: "Companies" }, description: { es: "Pantallas LED para presentaciones, celebraciones internas y encuentros comerciales.", en: "LED screens for presentations, internal celebrations and commercial gatherings." } },
+    { id: "labs", icon: "building-2", title: { es: "Laboratorios y empresas", en: "Laboratories and companies" }, description: { es: "Pantallas LED para congresos, convenciones internas y presentaciones comerciales.", en: "LED screens for congresses, internal conventions and commercial presentations." } },
     { id: "agencies", icon: "megaphone", title: { es: "Agencias", en: "Agencies" }, description: { es: "Respuesta técnica para activaciones, campañas y experiencias de marca.", en: "Technical response for activations, campaigns and brand experiences." } },
     { id: "producers", icon: "clapperboard", title: { es: "Productoras", en: "Production companies" }, description: { es: "Coordinación clara con sonido, iluminación, escenario y dirección técnica.", en: "Clear coordination with audio, lighting, staging and technical direction." } },
-    { id: "venues", icon: "map-pin", title: { es: "Salones y venues", en: "Venues" }, description: { es: "Integración con accesos, tiempos de montaje y condiciones del espacio.", en: "Integration with access, setup timing and venue conditions." } },
-    { id: "social-organizers", icon: "party-popper", title: { es: "Organizadores sociales", en: "Social event organizers" }, description: { es: "Acompañamiento para celebraciones que necesitan impacto visual y operación confiable.", en: "Support for celebrations that need visual impact and reliable operation." } }
+    { id: "venues", icon: "warehouse", title: { es: "Salones y venues", en: "Venues" }, description: { es: "Integración con accesos, tiempos de montaje y condiciones del espacio.", en: "Integration with access, setup timing and venue conditions." } },
+    { id: "congress-organizers", icon: "map-pin", title: { es: "Organizadores de congresos", en: "Congress organizers" }, description: { es: "Soporte para eventos científicos y profesionales con salas simultáneas.", en: "Support for scientific and professional events with simultaneous sessions." } }
   ],
   faq: [
     { id: "area", question: { es: "¿En qué zonas trabajan?", en: "Which areas do you cover?" }, answer: { es: "Trabajamos en CABA y Buenos Aires, Argentina, con coordinación previa para cada evento.", en: "We work across CABA and Buenos Aires, Argentina, with planning adapted to each event." } },
-    { id: "events", question: { es: "¿Qué tipos de eventos cubren?", en: "What event types do you cover?" }, answer: { es: "Eventos corporativos, sociales, activaciones, shows, congresos y producciones especiales.", en: "Corporate events, social events, activations, shows, conferences and special productions." } },
+    { id: "events", question: { es: "¿Qué tipos de eventos cubren?", en: "What event types do you cover?" }, answer: { es: "Congresos médicos y científicos, eventos corporativos, lanzamientos, convenciones, activaciones y producciones especiales. También eventos sociales de alto perfil.", en: "Medical and scientific congresses, corporate events, launches, conventions, activations and special productions. Also high-profile social events." } },
     { id: "screens", question: { es: "¿Qué pantallas LED ofrecen?", en: "What LED screens do you offer?" }, answer: { es: "Contamos con pantallas indoor pitch 2.6 mm y outdoor pitch 3.9 mm para distintos contextos.", en: "We provide indoor 2.6 mm pitch and outdoor 3.9 mm pitch LED screens for different contexts." } },
     { id: "operation", question: { es: "¿Incluyen armado y operación?", en: "Is setup and operation included?" }, answer: { es: "Sí. El servicio contempla montaje, operación técnica y soporte durante el evento.", en: "Yes. The service includes setup, technical operation and support during the event." } },
     { id: "quote", question: { es: "¿Cómo se solicita una cotización?", en: "How do I request a quote?" }, answer: { es: "Podés escribir por WhatsApp con fecha, lugar, horario y tipo de evento para recibir una propuesta.", en: "Contact us on WhatsApp with the date, venue, schedule and event type to receive a proposal." } },
@@ -177,17 +177,17 @@ export const site = {
       htmlLang: "es-AR",
       route: "/",
       alternateRoute: "/en/",
-      seo: { title: "Rental Led | Pantallas LED para eventos en Buenos Aires", description: "Alquiler de pantallas LED para eventos corporativos y sociales en CABA y Buenos Aires, con montaje, operación en vivo y soporte técnico.", canonicalPath: "/", ogImage: "/og-rental-led.png", ogImageAlt: "Operación de pantallas LED de Rental Led para eventos" },
+      seo: { title: "Rental Led | Pantallas LED para congresos y eventos corporativos en Buenos Aires", description: "Alquiler y operación de pantallas LED para congresos médicos, lanzamientos y eventos corporativos en CABA y Buenos Aires. Equipo técnico propio: montaje y operación en vivo.", canonicalPath: "/", ogImage: "/og-rental-led.png", ogImageAlt: "Operación de pantallas LED de Rental Led para eventos" },
       sections: {
         shell: { skipLabel: "Saltar al contenido principal", navLabel: "Navegación principal", languageLabel: "Selector de idioma", menuOpenLabel: "Menú", menuCloseLabel: "Cerrar" },
         hero: {
-          eyebrow: "Rental Led · Pantallas LED",
-          titleLead: "Pantallas LED para eventos que tienen que verse",
-          titleHighlight: "impecables",
-          subtitle: "Resolvemos la técnica visual de tu evento con pantallas LED, operación profesional y una puesta cuidada de principio a fin. En CABA y Buenos Aires, para eventos corporativos, sociales y producciones que no pueden fallar.",
+          eyebrow: "Rental Led · Producción técnica LED",
+          titleLead: "Pantallas LED para eventos donde la imagen no puede",
+          titleHighlight: "fallar",
+          subtitle: "Alquiler, montaje y operación en vivo de pantallas LED para congresos, lanzamientos y eventos corporativos. Equipo técnico propio de principio a fin, en CABA y Buenos Aires.",
           primaryCta: "Cotizar por WhatsApp",
           primaryCtaShort: "Cotizar",
-          secondaryCta: "Ver portfolio",
+          secondaryCta: "Ver montajes reales",
           stats: [
             { key: "Trayectoria", value: "12+", label: "años en eventos" },
             { key: "Indoor", value: "2.6 mm", label: "pixel pitch" },
@@ -196,27 +196,27 @@ export const site = {
           media: [
             { fileName: "1000085426.webp", category: "Evento corporativo", liveLabel: "" }
           ],
-          ticker: ["Pantallas LED", "Eventos corporativos", "Eventos sociales", "CABA · Buenos Aires", "Operación técnica propia", "Indoor 2.6mm", "Outdoor 3.9mm", "Producciones en vivo"]
+          ticker: ["Pantallas LED", "Congresos y simposios", "Eventos corporativos", "Lanzamientos de marca", "CABA · Buenos Aires", "Operación técnica propia", "Indoor 2.6mm", "Outdoor 3.9mm"]
         },
         about: {
           eyebrow: "Experiencia",
           years: "12+",
           yearsLabel: "años de experiencia en eventos",
-          title: "Un socio técnico, no solo un proveedor de equipos",
-          body: "Operamos pantallas LED indoor pitch 2.6 mm y outdoor pitch 3.9 mm con equipo técnico propio, planificación clara y atención personalizada para cada proyecto.",
-          details: ["Operación técnica propia", "Pantallas indoor 2.6 mm y outdoor 3.9 mm", "Respuesta rápida y seguimiento responsable"],
+          title: "Un socio técnico, no un simple alquiler de equipos",
+          body: "Operamos pantallas LED indoor de pitch 2.6 mm y outdoor de 3.9 mm con equipo técnico propio. Planificamos cada montaje con anticipación y operamos en vivo, para que la parte visual de tu congreso, lanzamiento o evento salga exactamente como está previsto.",
+          details: ["Equipo técnico propio, sin tercerizar", "Pantallas indoor 2.6 mm y outdoor 3.9 mm", "Planificación previa y operación en vivo"],
           imageFileName: "1000140534-about.webp",
           imageWidth: 1200,
           imageHeight: 900,
           imageAlt: "Pantalla LED de gran formato en evento",
           imageTag: "Operación en vivo"
         },
-        services: { eyebrow: "Servicios", title: "Soluciones LED para cada formato de evento", body: "Trabajamos con empresas, agencias, productoras, venues y organizadores sociales que necesitan impacto visual y soporte confiable." },
-        portfolio: { eyebrow: "Portfolio real", title: "Pantallas en eventos, shows y producciones", body: "Una selección de montajes reales con pantallas LED, operación técnica y contenido visual aplicado a distintos formatos de evento.", cta: "Pedir más ejemplos" },
-        clients: { eyebrow: "Clientes", title: "Acompañamos a quienes producen experiencias", body: "Sin logos inventados ni testimonios fabricados: el foco está en los equipos que suelen necesitar una operación LED confiable." },
+        services: { eyebrow: "Servicios", title: "Pantallas LED para cada formato profesional", body: "Trabajamos con productoras, agencias, laboratorios y organizadores de congresos que necesitan impacto visual y una operación técnica sin fisuras." },
+        portfolio: { eyebrow: "Portfolio real", title: "Pantallas en congresos, eventos y producciones", body: "Una selección de montajes reales con pantallas LED, operación técnica y contenido visual en distintos formatos profesionales.", cta: "Pedir ejemplos de tu tipo de evento" },
+        clients: { eyebrow: "Clientes", title: "Trabajamos detrás de escena de tu evento", body: "Sin logos inventados ni testimonios fabricados. El foco está en los equipos que necesitan una operación LED confiable: laboratorios, productoras, agencias y organizadores de congresos." },
         faq: { eyebrow: "Preguntas frecuentes", title: "Información clave antes de cotizar", body: "Respuestas directas sobre cobertura, tipos de eventos, operación técnica, tiempos y soporte." },
-        contact: { eyebrow: "Contacto", title: "Hablemos sobre tu evento", body: "Compartinos fecha, lugar, horarios y necesidades técnicas y preparamos una propuesta clara para tu evento.", whatsappLabel: "Escribir por WhatsApp", instagramLabel: "Ver Instagram", locationLabel: "Zona de cobertura" },
-        footer: { rights: "Pantallas LED para eventos en CABA y Buenos Aires, con operación técnica propia de principio a fin.", navLabel: "Navegación", contactLabel: "Contacto", languageLabel: "Idioma", tagline: "Pantallas LED · Producción técnica para eventos" }
+        contact: { eyebrow: "Contacto", title: "Hablemos de tu evento", body: "Compartinos fecha, sede, horarios y requerimientos técnicos, y preparamos una propuesta clara para tu congreso, lanzamiento o evento.", whatsappLabel: "Escribir por WhatsApp", instagramLabel: "Ver Instagram", locationLabel: "Zona de cobertura" },
+        footer: { rights: "Pantallas LED para congresos y eventos corporativos en CABA y Buenos Aires, con operación técnica propia de principio a fin.", navLabel: "Navegación", contactLabel: "Contacto", languageLabel: "Idioma", tagline: "Pantallas LED · Producción técnica para eventos profesionales" }
       }
     },
     en: {
@@ -224,17 +224,17 @@ export const site = {
       htmlLang: "en",
       route: "/en/",
       alternateRoute: "/",
-      seo: { title: "Rental Led | LED Screen Rental in Buenos Aires", description: "LED screen rental for corporate and social events in Buenos Aires, with setup, live operation and technical support.", canonicalPath: "/en/", ogImage: "/og-rental-led.png", ogImageAlt: "Rental Led LED screen operation for events" },
+      seo: { title: "Rental Led | LED Screen Rental for Congresses & Corporate Events in Buenos Aires", description: "LED screen rental and operation for medical congresses, product launches and corporate events in Buenos Aires. In-house technical crew: setup and live operation.", canonicalPath: "/en/", ogImage: "/og-rental-led.png", ogImageAlt: "Rental Led LED screen operation for events" },
       sections: {
         shell: { skipLabel: "Skip to main content", navLabel: "Primary navigation", languageLabel: "Language selector", menuOpenLabel: "Menu", menuCloseLabel: "Close" },
         hero: {
-          eyebrow: "Rental Led · LED Screens",
-          titleLead: "LED screens for events that need to look",
-          titleHighlight: "flawless",
-          subtitle: "We handle the visual side of your event with LED screens, professional operation and a polished setup from start to finish. Based in Buenos Aires, for corporate events, social events and productions that cannot fail.",
+          eyebrow: "Rental Led · LED Technical Production",
+          titleLead: "LED screens for events where the image cannot",
+          titleHighlight: "fail",
+          subtitle: "LED screen rental, setup and live operation for congresses, product launches and corporate events. In-house technical crew from start to finish, in Buenos Aires.",
           primaryCta: "Request a WhatsApp quote",
           primaryCtaShort: "Get a quote",
-          secondaryCta: "View portfolio",
+          secondaryCta: "See real setups",
           stats: [
             { key: "Track record", value: "12+", label: "years in events" },
             { key: "Indoor", value: "2.6 mm", label: "pixel pitch" },
@@ -243,27 +243,27 @@ export const site = {
           media: [
             { fileName: "1000085426.webp", category: "Corporate event", liveLabel: "" }
           ],
-          ticker: ["LED screens", "Corporate events", "Social events", "Buenos Aires", "In-house technical crew", "Indoor 2.6mm", "Outdoor 3.9mm", "Live productions"]
+          ticker: ["LED screens", "Congresses & symposia", "Corporate events", "Brand launches", "Buenos Aires", "In-house technical crew", "Indoor 2.6mm", "Outdoor 3.9mm"]
         },
         about: {
           eyebrow: "Experience",
           years: "12+",
           yearsLabel: "years of event experience",
-          title: "A technical partner, not just an equipment supplier",
-          body: "We operate indoor 2.6 mm pitch and outdoor 3.9 mm pitch LED screens with an in-house technical crew, clear planning and personalized attention for every project.",
-          details: ["In-house technical operation", "Indoor 2.6 mm and outdoor 3.9 mm screens", "Fast response and responsible follow-through"],
+          title: "A technical partner, not just an equipment rental",
+          body: "We operate indoor 2.6 mm pitch and outdoor 3.9 mm pitch LED screens with an in-house technical crew. We plan every setup in advance and operate live, so the visual side of your congress, launch or event runs exactly as planned.",
+          details: ["In-house technical crew, never outsourced", "Indoor 2.6 mm and outdoor 3.9 mm screens", "Advance planning and live operation"],
           imageFileName: "1000140534-about.webp",
           imageWidth: 1200,
           imageHeight: 900,
           imageAlt: "Large-format LED screen at an event",
           imageTag: "Live operation"
         },
-        services: { eyebrow: "Services", title: "LED solutions for every event format", body: "We support companies, agencies, production teams, venues and social organizers that need visual impact and reliable technical support." },
-        portfolio: { eyebrow: "Real portfolio", title: "Screens across events, shows and productions", body: "A selection of real setups with LED screens, technical operation and visual content adapted to different event formats.", cta: "Ask for more examples" },
-        clients: { eyebrow: "Clients", title: "Built for teams producing experiences", body: "No invented logos or fabricated testimonials: the focus is on the teams that usually need reliable LED operation." },
+        services: { eyebrow: "Services", title: "LED screens for every professional format", body: "We work with production companies, agencies, laboratories and congress organizers that need visual impact and flawless technical operation." },
+        portfolio: { eyebrow: "Real portfolio", title: "Screens across congresses, events and productions", body: "A selection of real setups with LED screens, technical operation and visual content across different professional formats.", cta: "Ask for examples for your type of event" },
+        clients: { eyebrow: "Clients", title: "We work behind the scenes of your event", body: "No invented logos or fabricated testimonials. The focus is on the teams that need reliable LED operation: laboratories, production companies, agencies and congress organizers." },
         faq: { eyebrow: "FAQ", title: "Key details before requesting a quote", body: "Direct answers about coverage, event types, technical operation, timing and support." },
-        contact: { eyebrow: "Contact", title: "Tell us about your event", body: "Share the date, venue, schedule and technical needs and we will prepare a clear proposal for your event.", whatsappLabel: "Message on WhatsApp", instagramLabel: "View Instagram", locationLabel: "Service area" },
-        footer: { rights: "LED screens for events in CABA and Buenos Aires, with in-house technical operation from start to finish.", navLabel: "Navigation", contactLabel: "Contact", languageLabel: "Language", tagline: "LED screens · Technical production for events" }
+        contact: { eyebrow: "Contact", title: "Let's talk about your event", body: "Share the date, venue, schedule and technical requirements and we will prepare a clear proposal for your congress, launch or event.", whatsappLabel: "Message on WhatsApp", instagramLabel: "View Instagram", locationLabel: "Service area" },
+        footer: { rights: "LED screens for congresses and corporate events in CABA and Buenos Aires, with in-house technical operation from start to finish.", navLabel: "Navigation", contactLabel: "Contact", languageLabel: "Language", tagline: "LED screens · Technical production for professional events" }
       }
     }
   }

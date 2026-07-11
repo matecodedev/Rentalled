@@ -45,7 +45,7 @@ const expectedPages = [
       },
       {
         question: "¿Qué tipos de eventos cubren?",
-        answer: "Eventos corporativos, sociales, activaciones, shows, congresos y producciones especiales."
+        answer: "Congresos médicos y científicos, eventos corporativos, lanzamientos, convenciones, activaciones y producciones especiales. También eventos sociales de alto perfil."
       },
       {
         question: "¿Qué pantallas LED ofrecen?",
@@ -77,7 +77,7 @@ const expectedPages = [
       },
       {
         question: "What event types do you cover?",
-        answer: "Corporate events, social events, activations, shows, conferences and special productions."
+        answer: "Medical and scientific congresses, corporate events, launches, conventions, activations and special productions. Also high-profile social events."
       },
       {
         question: "What LED screens do you offer?",
