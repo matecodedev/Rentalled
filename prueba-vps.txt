@@ -1,0 +1,3 @@
+Esto es una prueba desde el VPS.
+
+Creado para verificar la sincronización con la Mac.
