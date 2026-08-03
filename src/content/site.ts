@@ -81,7 +81,15 @@ export type LandingSections = {
     instagramLabel: string;
     locationLabel: string;
   };
-  footer: { rights: string; navLabel: string; contactLabel: string; languageLabel: string; tagline: string };
+  footer: {
+    rights: string;
+    navLabel: string;
+    contactLabel: string;
+    languageLabel: string;
+    tagline: string;
+    /** Studio credit prefix. The studio name itself is not translated. */
+    credit: string;
+  };
 };
 
 export type LocalizedPage = {
@@ -250,7 +258,7 @@ export const site = {
         clients: { eyebrow: "Clientes", title: "Trabajamos detrás de escena de tu evento", body: "Sin logos inventados ni testimonios fabricados. El foco está en los equipos que necesitan una operación LED confiable: laboratorios, productoras, agencias y organizadores de congresos." },
         faq: { eyebrow: "Preguntas frecuentes", title: "Información clave antes de cotizar", body: "Respuestas directas sobre cobertura, tipos de eventos, operación técnica, tiempos y soporte." },
         contact: { eyebrow: "Contacto", title: "Hablemos de tu evento", body: "Compartinos fecha, sede, horarios y requerimientos técnicos, y preparamos una propuesta clara para tu congreso, lanzamiento o evento.", whatsappLabel: "Escribir por WhatsApp", instagramLabel: "Ver Instagram", locationLabel: "Zona de cobertura" },
-        footer: { rights: "Pantallas LED para congresos y eventos corporativos en CABA y Buenos Aires, con operación técnica propia de principio a fin.", navLabel: "Navegación", contactLabel: "Contacto", languageLabel: "Idioma", tagline: "Pantallas LED · Producción técnica para eventos profesionales" }
+        footer: { rights: "Pantallas LED para congresos y eventos corporativos en CABA y Buenos Aires, con operación técnica propia de principio a fin.", navLabel: "Navegación", contactLabel: "Contacto", languageLabel: "Idioma", tagline: "Pantallas LED · Producción técnica para eventos profesionales", credit: "Sitio desarrollado por" }
       }
     },
     en: {
@@ -326,7 +334,7 @@ export const site = {
         clients: { eyebrow: "Clients", title: "We work behind the scenes of your event", body: "No invented logos or fabricated testimonials. The focus is on the teams that need reliable LED operation: laboratories, production companies, agencies and congress organizers." },
         faq: { eyebrow: "FAQ", title: "Key details before requesting a quote", body: "Direct answers about coverage, event types, technical operation, timing and support." },
         contact: { eyebrow: "Contact", title: "Let's talk about your event", body: "Share the date, venue, schedule and technical requirements and we will prepare a clear proposal for your congress, launch or event.", whatsappLabel: "Message on WhatsApp", instagramLabel: "View Instagram", locationLabel: "Service area" },
-        footer: { rights: "LED screens for congresses and corporate events in CABA and Buenos Aires, with in-house technical operation from start to finish.", navLabel: "Navigation", contactLabel: "Contact", languageLabel: "Language", tagline: "LED screens · Technical production for professional events" }
+        footer: { rights: "LED screens for congresses and corporate events in CABA and Buenos Aires, with in-house technical operation from start to finish.", navLabel: "Navigation", contactLabel: "Contact", languageLabel: "Language", tagline: "LED screens · Technical production for professional events", credit: "Site built by" }
       }
     }
   }

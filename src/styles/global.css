@@ -490,6 +490,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .rl-footer-bottom { border-top: 1px solid var(--border); }
 .rl-footer-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; color: var(--text-faint); font-size: .82rem; }
 
+/* Studio credit — legible as a link without competing with the client's own
+   footer content, which is what the bottom bar is actually for. */
+.rl-footer-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; transition: color .2s var(--ease); }
+.rl-footer-credit a:hover { color: var(--text); }
+
 /* ---- Lightbox ------------------------------------------------------------ */
 .rl-lightbox {
   position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;

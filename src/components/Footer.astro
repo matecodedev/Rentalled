@@ -57,6 +57,14 @@ const year = new Date().getFullYear();
     <div class="rl-footer-bottom-inner">
       <span>© {year} {site.name} · {site.contact.location[locale]}</span>
       <span>{footer.tagline}</span>
+      {/*
+        Studio credit. Deliberately a plain followable link — no `nofollow`,
+        which is the whole point of it existing.
+      */}
+      <span class="rl-footer-credit">
+        {footer.credit}{" "}
+        <a href="https://matecode.dev" target="_blank" rel="noopener">MateCode</a>
+      </span>
     </div>
   </div>
 </footer>
